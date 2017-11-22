@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="icon" href="/favicon.ico">
+<title>后台管理</title>
+
+<!-- Bootstrap core CSS -->
+<link href="/resource/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Custom styles for this template -->
+<link href="/resource/bootstrap-3.3.7/css/dashboard.css" rel="stylesheet">
+
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="">小明博客-后台</a>
+			</div>
+			<div id="navbar" class="navbar-collapse collapse">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="">首页</a></li>
+					<li><a href="#">设置</a></li>
+					<li><a href="#">个人主页</a></li>
+					<li><a href="#">帮助</a></li>
+				</ul>
+				<form class="navbar-form navbar-right">
+					<input type="text" class="form-control" placeholder="Search...">
+				</form>
+			</div>
+		</div>
+	</nav>
+
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-3 col-md-2 sidebar">
+				<ul class="nav nav-sidebar">
+					<li class="active"><a href="" onclick="showAtRight('welcome')"> 主页 <span class="sr-only">(current)</span>
+					</a></li>
+					<!-- 一级菜单 -->
+					<li><a href="#userMeun" class="nav-header menu-first collapsed" data-toggle="collapse"> <i class="fa fa-user"></i> 文章管理
+					</a></li>
+					<!-- 二级菜单 -->
+					<!-- 注意一级菜单中<a>标签内的href="#……"里面的内容要与二级菜单中<ul>标签内的id="……"里面的内容一致 -->
+					<ul id="userMeun" class="nav nav-list collapse menu-second">
+						<li><a href="###" onclick="showAtRight('article_list')"> <i class="fa fa-users"></i> &nbsp; &nbsp;文章管理
+						</a></li>
+					</ul>
+					<!-- <li><a href="#">Analytics</a></li>
+					<li><a href="#">Export</a></li> -->
+				</ul>
+				<!-- <ul class="nav nav-sidebar">
+					<li><a href="">Nav item</a></li>
+					<li><a href="">Nav item again</a></li>
+					<li><a href="">One more nav</a></li>
+					<li><a href="">Another nav item</a></li>
+					<li><a href="">More navigation</a></li>
+				</ul>
+				<ul class="nav nav-sidebar">
+					<li><a href="">Nav item again</a></li>
+					<li><a href="">One more nav</a></li>
+					<li><a href="">Another nav item</a></li>
+				</ul> -->
+			</div>
+
+			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" id="content"></div>
+		</div>
+	</div>
+
+	<!-- Bootstrap core JavaScript
+    ================================================== -->
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script type="text/javascript" src="/resource/jquery/jquery-3.2.1.min.js"></script>
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="/resource/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/resource/lib/ueditor/1.4.3/ueditor.config.js"></script>
+	<script type="text/javascript" src="/resource/lib/ueditor/1.4.3/ueditor.all.min.js">
+		
+	</script>
+	<script type="text/javascript" src="/resource/lib/ueditor/1.4.3/lang/zh-cn/zh-cn.js"></script>
+	<script type="text/javascript">
+		/*
+		 * 对选中的标签激活active状态，对先前处于active状态但之后未被选中的标签取消active
+		 * （实现左侧菜单中的标签点击后变色的效果）
+		 */
+		$(function() {
+			$('ul.nav > li').click(function(e) {
+				//e.preventDefault();    加上这句则导航的<a>标签会失效
+				$('ul.nav > li').removeClass('active');
+				$(this).addClass('active');
+			});
+			showAtRight("welcome");
+		});
+
+		/*
+		 * 利用div实现左边点击右边显示的效果（以id="content"的div进行内容展示）
+		 * 注意：
+		 *   ①：js获取网页的地址，是根据当前网页来相对获取的，不会识别根目录；
+		 *   ②：如果右边加载的内容显示页里面有css，必须放在主页（即例中的index.jsp）才起作用
+		 *   （如果单纯的两个页面之间include，子页面的css和js在子页面是可以执行的。 主页面也可以调用子页面的js。但这时要考虑页面中js和渲染的先后顺序 ）
+		 */
+		function showAtRight(url) {
+			$("#content").load(url, function(responseTxt, statusTxt, xhr) {
+				
+			});
+		}
+	</script>
+
+</body>
+</html>

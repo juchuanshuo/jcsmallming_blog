@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="icon" href="/favicon.ico">
+<title>编辑文章</title>
+</head>
+<body>
+	<div class="container">
+		<form role="form" id="form-article-edit">
+		<br><br>
+			<div class="form-group">
+				<label for="contentName">文章标题：</label> <input type="text" class="form-control" value="" placeholder="" id="contentName" name="contentName">
+			</div>
+			<div class="form-group">
+				<label>文章类型：</label> <select name="contentType" id="contentType3" class="form-control">
+				</select>
+			</div>
+			<div class="form-group">
+				<label>文章摘要：</label>
+					<textarea name="summary" id="summary" placeholder="说点什么..." class="form-control" rows="3"></textarea>
+			</div>
+			<div class="form-group">
+				<label>文章内容：</label>
+				<script id="editor2" type="text/plain" style="width: 100%; height: 400px;"></script>
+			</div>
+			<div class="form-group">
+				<!-- <button onClick="article_save_submit();" class="btn btn-primary radius" type="submit"><i class="Hui-iconfont">&#xe632;</i> 保存并提交审核</button>
+				<button onClick="article_save();" class="btn btn-secondary radius" type="button"><i class="Hui-iconfont">&#xe632;</i> 保存草稿</button>
+				<button onClick="removeIframe();" class="btn btn-default radius" type="button">&nbsp;&nbsp;取消&nbsp;&nbsp;</button> -->
+				<button onClick="article_edit_submit();" id="edit_tn" class="btn btn-primary" type="button">修改</button>
+			</div>
+		</form>
+	</div>
+	<!-- <script type="text/javascript"
+		src="/resource/lib/ueditor/1.4.3/ueditor.config.js"></script>
+	<script type="text/javascript" src="/resource/lib/ueditor/1.4.3/ueditor.all.min.js">
+		
+	</script>
+	<script type="text/javascript" src="/resource/lib/ueditor/1.4.3/lang/zh-cn/zh-cn.js"></script> -->
+	<script type="text/javascript">
+		function article_edit_submit() {
+			$.ajax({
+				type : "POST",
+				dataType : "json",
+				url : "/list/edit/"+$("#edit_tn").attr("edit-id"),
+				data : $('#form-article-edit').serialize(),
+				contentType : "application/x-www-form-urlencoded",
+				success : function(result) {
+					alert('修改结果：' + result.re, 3000);
+				},
+				error : function(data) {
+					alert("error:" + data.responseText);
+				}
+			});
+			//document.getElementById("form-article-add").submit();
+		}
+
+		$(function() {
+			var ue = UE.getEditor('editor2');
+		});
+	</script>
+</body>
+</html>
