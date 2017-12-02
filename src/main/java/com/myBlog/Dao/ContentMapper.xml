@@ -32,7 +32,8 @@
 									and ${criterion.condition} #{criterion.value}
 								</when>
 								<when test="criterion.betweenValue">
-									and ${criterion.condition} #{criterion.value} and
+									and ${criterion.condition} #{criterion.value}
+									and
 									#{criterion.secondValue}
 								</when>
 								<when test="criterion.listValue">
@@ -64,7 +65,8 @@
 									and ${criterion.condition} #{criterion.value}
 								</when>
 								<when test="criterion.betweenValue">
-									and ${criterion.condition} #{criterion.value} and
+									and ${criterion.condition} #{criterion.value}
+									and
 									#{criterion.secondValue}
 								</when>
 								<when test="criterion.listValue">
@@ -82,7 +84,8 @@
 		</where>
 	</sql>
 	<sql id="Base_Column_List">
-		content_id, content_type, content_name, tiny_img, pageviews, conten_state,
+		content_id, content_type, content_name, tiny_img,
+		pageviews, conten_state,
 		create_time,
 		summary, update_time, author
 	</sql>
@@ -131,7 +134,8 @@
 		where content_id = #{contentId,jdbcType=INTEGER}
 	</select>
 	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-		delete from content
+		delete from
+		content
 		where content_id = #{contentId,jdbcType=INTEGER}
 	</delete>
 	<delete id="deleteByExample" parameterType="com.myBlog.domain.ContentExample">
@@ -141,13 +145,17 @@
 		</if>
 	</delete>
 	<insert id="insert" parameterType="com.myBlog.domain.Content">
-		insert into content (content_id, content_type, content_name,
-		tiny_img, pageviews, conten_state,
+		insert into content
+		(content_id, content_type, content_name,
+		tiny_img, pageviews,
+		conten_state,
 		create_time, summary, update_time,
 		author, content)
-		values (#{contentId,jdbcType=INTEGER}, #{contentType,jdbcType=INTEGER},
+		values
+		(#{contentId,jdbcType=INTEGER}, #{contentType,jdbcType=INTEGER},
 		#{contentName,jdbcType=CHAR},
-		#{tinyImg,jdbcType=VARCHAR}, #{pageviews,jdbcType=INTEGER}, #{contenState,jdbcType=INTEGER},
+		#{tinyImg,jdbcType=VARCHAR},
+		#{pageviews,jdbcType=INTEGER}, #{contenState,jdbcType=INTEGER},
 		#{createTime}, #{summary,jdbcType=CHAR},
 		#{updateTime},
 		#{author,jdbcType=CHAR}, #{content,jdbcType=LONGVARCHAR})
@@ -277,15 +285,22 @@
 		update content
 		set content_id = #{record.contentId,jdbcType=INTEGER},
 		content_type = #{record.contentType,jdbcType=INTEGER},
-		content_name = #{record.contentName,jdbcType=CHAR},
-		tiny_img = #{record.tinyImg,jdbcType=VARCHAR},
-		pageviews = #{record.pageviews,jdbcType=INTEGER},
-		conten_state = #{record.contenState,jdbcType=INTEGER},
-		create_time = #{record.createTime},
+		content_name =
+		#{record.contentName,jdbcType=CHAR},
+		tiny_img =
+		#{record.tinyImg,jdbcType=VARCHAR},
+		pageviews =
+		#{record.pageviews,jdbcType=INTEGER},
+		conten_state =
+		#{record.contenState,jdbcType=INTEGER},
+		create_time =
+		#{record.createTime},
 		summary = #{record.summary,jdbcType=CHAR},
 		update_time = #{record.updateTime},
-		author = #{record.author,jdbcType=CHAR},
-		content = #{record.content,jdbcType=LONGVARCHAR}
+		author =
+		#{record.author,jdbcType=CHAR},
+		content =
+		#{record.content,jdbcType=LONGVARCHAR}
 		<if test="_parameter != null">
 			<include refid="Update_By_Example_Where_Clause" />
 		</if>
@@ -294,14 +309,20 @@
 		update content
 		set content_id = #{record.contentId,jdbcType=INTEGER},
 		content_type = #{record.contentType,jdbcType=INTEGER},
-		content_name = #{record.contentName,jdbcType=CHAR},
-		tiny_img = #{record.tinyImg,jdbcType=VARCHAR},
-		pageviews = #{record.pageviews,jdbcType=INTEGER},
-		conten_state = #{record.contenState,jdbcType=INTEGER},
-		create_time = #{record.createTime},
+		content_name =
+		#{record.contentName,jdbcType=CHAR},
+		tiny_img =
+		#{record.tinyImg,jdbcType=VARCHAR},
+		pageviews =
+		#{record.pageviews,jdbcType=INTEGER},
+		conten_state =
+		#{record.contenState,jdbcType=INTEGER},
+		create_time =
+		#{record.createTime},
 		summary = #{record.summary,jdbcType=CHAR},
 		update_time = #{record.updateTime},
-		author = #{record.author,jdbcType=CHAR}
+		author =
+		#{record.author,jdbcType=CHAR}
 		<if test="_parameter != null">
 			<include refid="Update_By_Example_Where_Clause" />
 		</if>
@@ -343,38 +364,52 @@
 		where content_id = #{contentId,jdbcType=INTEGER}
 	</update>
 	<update id="updateByPrimaryKeyWithBLOBs" parameterType="com.myBlog.domain.Content">
-		update content
+		update
+		content
 		set content_type = #{contentType,jdbcType=INTEGER},
 		content_name = #{contentName,jdbcType=CHAR},
-		tiny_img = #{tinyImg,jdbcType=VARCHAR},
+		tiny_img =
+		#{tinyImg,jdbcType=VARCHAR},
 		pageviews = #{pageviews,jdbcType=INTEGER},
 		conten_state = #{contenState,jdbcType=INTEGER},
-		create_time = #{createTime},
+		create_time =
+		#{createTime},
 		summary = #{summary,jdbcType=CHAR},
-		update_time = #{updateTime},
+		update_time =
+		#{updateTime},
 		author = #{author,jdbcType=CHAR},
-		content = #{content,jdbcType=LONGVARCHAR}
-		where content_id = #{contentId,jdbcType=INTEGER}
+		content =
+		#{content,jdbcType=LONGVARCHAR}
+		where content_id =
+		#{contentId,jdbcType=INTEGER}
 	</update>
 	<update id="updateByPrimaryKey" parameterType="com.myBlog.domain.Content">
 		update content
-		set content_type = #{contentType,jdbcType=INTEGER},
-		content_name = #{contentName,jdbcType=CHAR},
+		set
+		content_type = #{contentType,jdbcType=INTEGER},
+		content_name =
+		#{contentName,jdbcType=CHAR},
 		tiny_img = #{tinyImg,jdbcType=VARCHAR},
 		pageviews = #{pageviews,jdbcType=INTEGER},
-		conten_state = #{contenState,jdbcType=INTEGER},
+		conten_state =
+		#{contenState,jdbcType=INTEGER},
 		create_time = #{createTime},
-		summary = #{summary,jdbcType=CHAR},
+		summary =
+		#{summary,jdbcType=CHAR},
 		update_time = #{updateTime},
-		author = #{author,jdbcType=CHAR}
-		where content_id = #{contentId,jdbcType=INTEGER}
+		author =
+		#{author,jdbcType=CHAR}
+		where content_id =
+		#{contentId,jdbcType=INTEGER}
 	</update>
 	<!-- 以下为自己编写 -->
 	<select id="getAll" resultMap="BaseResultMap">
-		select c.content_id, t.type_name as typeName, c.content_name,
+		select c.content_id, t.type_name
+		as typeName, c.content_name,
 		c.pageviews, c.conten_state,
 		c.create_time, c.summary, c.update_time,
 		c.content
-		from content c left join contentType t on c.content_type = t.content_type
+		from content c left
+		join contentType t on c.content_type = t.content_type
 	</select>
 </mapper>

@@ -3,119 +3,120 @@ package com.myBlog.domain;
 import java.util.Date;
 
 public class Content {
-    private Integer contentId;
+	private Integer contentId;
 
-    private Integer contentType;
+	private Integer contentType;
 
-    private String contentName;
+	private String contentName;
 
-    private String tinyImg;
+	private String tinyImg;
 
-    private Integer pageviews;
+	private Integer pageviews;
 
-    private Integer contenState;
+	private Integer contenState;
 
-    private Date createTime;
+	private Date createTime;
 
-    private String summary;
+	private String summary;
 
-    private Date updateTime;
+	private Date updateTime;
 
-    private String author;
+	private String author;
 
-    private String content;
-    
-    //中文的文章类型
-    private String typeName;
-    //字符串格式的时间
-    private String date;
-    public Integer getContentId() {
-        return contentId;
-    }
+	private String content;
 
-    public void setContentId(Integer contentId) {
-        this.contentId = contentId;
-    }
+	// 中文的文章类型
+	private String typeName;
+	// 字符串格式的时间
+	private String date;
 
-    public Integer getContentType() {
-        return contentType;
-    }
+	public Integer getContentId() {
+		return contentId;
+	}
 
-    public void setContentType(Integer contentType) {
-        this.contentType = contentType;
-    }
+	public void setContentId(Integer contentId) {
+		this.contentId = contentId;
+	}
 
-    public String getContentName() {
-        return contentName;
-    }
+	public Integer getContentType() {
+		return contentType;
+	}
 
-    public void setContentName(String contentName) {
-        this.contentName = contentName == null ? null : contentName.trim();
-    }
+	public void setContentType(Integer contentType) {
+		this.contentType = contentType;
+	}
 
-    public String getTinyImg() {
-        return tinyImg;
-    }
+	public String getContentName() {
+		return contentName;
+	}
 
-    public void setTinyImg(String tinyImg) {
-        this.tinyImg = tinyImg == null ? null : tinyImg.trim();
-    }
+	public void setContentName(String contentName) {
+		this.contentName = contentName == null ? null : contentName.trim();
+	}
 
-    public Integer getPageviews() {
-        return pageviews;
-    }
+	public String getTinyImg() {
+		return tinyImg;
+	}
 
-    public void setPageviews(Integer pageviews) {
-        this.pageviews = pageviews;
-    }
+	public void setTinyImg(String tinyImg) {
+		this.tinyImg = tinyImg == null ? null : tinyImg.trim();
+	}
 
-    public Integer getContenState() {
-        return contenState;
-    }
+	public Integer getPageviews() {
+		return pageviews;
+	}
 
-    public void setContenState(Integer contenState) {
-        this.contenState = contenState;
-    }
+	public void setPageviews(Integer pageviews) {
+		this.pageviews = pageviews;
+	}
 
-    public Date getCreateTime() {
-        return createTime;
-    }
+	public Integer getContenState() {
+		return contenState;
+	}
 
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
+	public void setContenState(Integer contenState) {
+		this.contenState = contenState;
+	}
 
-    public String getSummary() {
-        return summary;
-    }
+	public Date getCreateTime() {
+		return createTime;
+	}
 
-    public void setSummary(String summary) {
-        this.summary = summary == null ? null : summary.trim();
-    }
+	public void setCreateTime(Date createTime) {
+		this.createTime = createTime;
+	}
 
-    public Date getUpdateTime() {
-        return updateTime;
-    }
+	public String getSummary() {
+		return summary;
+	}
 
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
-    }
+	public void setSummary(String summary) {
+		this.summary = summary == null ? null : summary.trim();
+	}
 
-    public String getAuthor() {
-        return author;
-    }
+	public Date getUpdateTime() {
+		return updateTime;
+	}
 
-    public void setAuthor(String author) {
-        this.author = author == null ? null : author.trim();
-    }
+	public void setUpdateTime(Date updateTime) {
+		this.updateTime = updateTime;
+	}
 
-    public String getContent() {
-        return content;
-    }
+	public String getAuthor() {
+		return author;
+	}
 
-    public void setContent(String content) {
-        this.content = content == null ? null : content.trim();
-    }
+	public void setAuthor(String author) {
+		this.author = author == null ? null : author.trim();
+	}
+
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content == null ? null : content.trim();
+	}
 
 	public String getTypeName() {
 		return typeName;
@@ -132,5 +133,5 @@ public class Content {
 	public void setDate(String date) {
 		this.date = date;
 	}
-	
+
 }

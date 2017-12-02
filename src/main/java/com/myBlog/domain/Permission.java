@@ -1,23 +1,23 @@
 package com.myBlog.domain;
 
 public class Permission {
-    private Integer permissionId;
+	private Integer permissionId;
 
-    private String permissionName;
+	private String permissionName;
 
-    public Integer getPermissionId() {
-        return permissionId;
-    }
+	public Integer getPermissionId() {
+		return permissionId;
+	}
 
-    public void setPermissionId(Integer permissionId) {
-        this.permissionId = permissionId;
-    }
+	public void setPermissionId(Integer permissionId) {
+		this.permissionId = permissionId;
+	}
 
-    public String getPermissionName() {
-        return permissionName;
-    }
+	public String getPermissionName() {
+		return permissionName;
+	}
 
-    public void setPermissionName(String permissionName) {
-        this.permissionName = permissionName == null ? null : permissionName.trim();
-    }
+	public void setPermissionName(String permissionName) {
+		this.permissionName = permissionName == null ? null : permissionName.trim();
+	}
 }

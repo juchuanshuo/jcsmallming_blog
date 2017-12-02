@@ -1,164 +1,172 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.myBlog.Dao.GenderMapper">
-  <resultMap id="BaseResultMap" type="com.myBlog.domain.Gender">
-    <id column="gender" jdbcType="INTEGER" property="gender" />
-    <result column="gender_name" jdbcType="CHAR" property="genderName" />
-  </resultMap>
-  <sql id="Example_Where_Clause">
-    <where>
-      <foreach collection="oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue">
-                  and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
-            </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Update_By_Example_Where_Clause">
-    <where>
-      <foreach collection="example.oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue">
-                  and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
-            </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Base_Column_List">
-    gender, gender_name
-  </sql>
-  <select id="selectByExample" parameterType="com.myBlog.domain.GenderExample" resultMap="BaseResultMap">
-    select
-    <if test="distinct">
-      distinct
-    </if>
-    <include refid="Base_Column_List" />
-    from gender
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null">
-      order by ${orderByClause}
-    </if>
-  </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from gender
-    where gender = #{gender,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from gender
-    where gender = #{gender,jdbcType=INTEGER}
-  </delete>
-  <delete id="deleteByExample" parameterType="com.myBlog.domain.GenderExample">
-    delete from gender
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-  </delete>
-  <insert id="insert" parameterType="com.myBlog.domain.Gender">
-    insert into gender (gender, gender_name)
-    values (#{gender,jdbcType=INTEGER}, #{genderName,jdbcType=CHAR})
-  </insert>
-  <insert id="insertSelective" parameterType="com.myBlog.domain.Gender">
-    insert into gender
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="gender != null">
-        gender,
-      </if>
-      <if test="genderName != null">
-        gender_name,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="gender != null">
-        #{gender,jdbcType=INTEGER},
-      </if>
-      <if test="genderName != null">
-        #{genderName,jdbcType=CHAR},
-      </if>
-    </trim>
-  </insert>
-  <select id="countByExample" parameterType="com.myBlog.domain.GenderExample" resultType="java.lang.Long">
-    select count(*) from gender
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-  </select>
-  <update id="updateByExampleSelective" parameterType="map">
-    update gender
-    <set>
-      <if test="record.gender != null">
-        gender = #{record.gender,jdbcType=INTEGER},
-      </if>
-      <if test="record.genderName != null">
-        gender_name = #{record.genderName,jdbcType=CHAR},
-      </if>
-    </set>
-    <if test="_parameter != null">
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByExample" parameterType="map">
-    update gender
-    set gender = #{record.gender,jdbcType=INTEGER},
-      gender_name = #{record.genderName,jdbcType=CHAR}
-    <if test="_parameter != null">
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.myBlog.domain.Gender">
-    update gender
-    <set>
-      <if test="genderName != null">
-        gender_name = #{genderName,jdbcType=CHAR},
-      </if>
-    </set>
-    where gender = #{gender,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.myBlog.domain.Gender">
-    update gender
-    set gender_name = #{genderName,jdbcType=CHAR}
-    where gender = #{gender,jdbcType=INTEGER}
-  </update>
+	<resultMap id="BaseResultMap" type="com.myBlog.domain.Gender">
+		<id column="gender" jdbcType="INTEGER" property="gender" />
+		<result column="gender_name" jdbcType="CHAR" property="genderName" />
+	</resultMap>
+	<sql id="Example_Where_Clause">
+		<where>
+			<foreach collection="oredCriteria" item="criteria" separator="or">
+				<if test="criteria.valid">
+					<trim prefix="(" prefixOverrides="and" suffix=")">
+						<foreach collection="criteria.criteria" item="criterion">
+							<choose>
+								<when test="criterion.noValue">
+									and ${criterion.condition}
+								</when>
+								<when test="criterion.singleValue">
+									and ${criterion.condition} #{criterion.value}
+								</when>
+								<when test="criterion.betweenValue">
+									and ${criterion.condition} #{criterion.value} and
+									#{criterion.secondValue}
+								</when>
+								<when test="criterion.listValue">
+									and ${criterion.condition}
+									<foreach close=")" collection="criterion.value" item="listItem"
+										open="(" separator=",">
+										#{listItem}
+									</foreach>
+								</when>
+							</choose>
+						</foreach>
+					</trim>
+				</if>
+			</foreach>
+		</where>
+	</sql>
+	<sql id="Update_By_Example_Where_Clause">
+		<where>
+			<foreach collection="example.oredCriteria" item="criteria"
+				separator="or">
+				<if test="criteria.valid">
+					<trim prefix="(" prefixOverrides="and" suffix=")">
+						<foreach collection="criteria.criteria" item="criterion">
+							<choose>
+								<when test="criterion.noValue">
+									and ${criterion.condition}
+								</when>
+								<when test="criterion.singleValue">
+									and ${criterion.condition} #{criterion.value}
+								</when>
+								<when test="criterion.betweenValue">
+									and ${criterion.condition} #{criterion.value} and
+									#{criterion.secondValue}
+								</when>
+								<when test="criterion.listValue">
+									and ${criterion.condition}
+									<foreach close=")" collection="criterion.value" item="listItem"
+										open="(" separator=",">
+										#{listItem}
+									</foreach>
+								</when>
+							</choose>
+						</foreach>
+					</trim>
+				</if>
+			</foreach>
+		</where>
+	</sql>
+	<sql id="Base_Column_List">
+		gender, gender_name
+	</sql>
+	<select id="selectByExample" parameterType="com.myBlog.domain.GenderExample"
+		resultMap="BaseResultMap">
+		select
+		<if test="distinct">
+			distinct
+		</if>
+		<include refid="Base_Column_List" />
+		from gender
+		<if test="_parameter != null">
+			<include refid="Example_Where_Clause" />
+		</if>
+		<if test="orderByClause != null">
+			order by ${orderByClause}
+		</if>
+	</select>
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from gender
+		where gender = #{gender,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from gender
+		where gender = #{gender,jdbcType=INTEGER}
+	</delete>
+	<delete id="deleteByExample" parameterType="com.myBlog.domain.GenderExample">
+		delete from gender
+		<if test="_parameter != null">
+			<include refid="Example_Where_Clause" />
+		</if>
+	</delete>
+	<insert id="insert" parameterType="com.myBlog.domain.Gender">
+		insert into gender (gender, gender_name)
+		values (#{gender,jdbcType=INTEGER}, #{genderName,jdbcType=CHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="com.myBlog.domain.Gender">
+		insert into gender
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="gender != null">
+				gender,
+			</if>
+			<if test="genderName != null">
+				gender_name,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="gender != null">
+				#{gender,jdbcType=INTEGER},
+			</if>
+			<if test="genderName != null">
+				#{genderName,jdbcType=CHAR},
+			</if>
+		</trim>
+	</insert>
+	<select id="countByExample" parameterType="com.myBlog.domain.GenderExample"
+		resultType="java.lang.Long">
+		select count(*) from gender
+		<if test="_parameter != null">
+			<include refid="Example_Where_Clause" />
+		</if>
+	</select>
+	<update id="updateByExampleSelective" parameterType="map">
+		update gender
+		<set>
+			<if test="record.gender != null">
+				gender = #{record.gender,jdbcType=INTEGER},
+			</if>
+			<if test="record.genderName != null">
+				gender_name = #{record.genderName,jdbcType=CHAR},
+			</if>
+		</set>
+		<if test="_parameter != null">
+			<include refid="Update_By_Example_Where_Clause" />
+		</if>
+	</update>
+	<update id="updateByExample" parameterType="map">
+		update gender
+		set gender = #{record.gender,jdbcType=INTEGER},
+		gender_name = #{record.genderName,jdbcType=CHAR}
+		<if test="_parameter != null">
+			<include refid="Update_By_Example_Where_Clause" />
+		</if>
+	</update>
+	<update id="updateByPrimaryKeySelective" parameterType="com.myBlog.domain.Gender">
+		update gender
+		<set>
+			<if test="genderName != null">
+				gender_name = #{genderName,jdbcType=CHAR},
+			</if>
+		</set>
+		where gender = #{gender,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.myBlog.domain.Gender">
+		update gender
+		set gender_name = #{genderName,jdbcType=CHAR}
+		where gender = #{gender,jdbcType=INTEGER}
+	</update>
 </mapper>

@@ -9,10 +9,8 @@
 			<property name="suppressAllComments" value="true" />
 		</commentGenerator>
 		<!--数据库链接地址账号密码 -->
-		<jdbcConnection 
-			driverClass="com.mysql.jdbc.Driver"
-			connectionURL="jdbc:mysql://localhost:3306/myBlog" 
-			userId="root" 
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://localhost:3306/myBlog" userId="root"
 			password="mima0010">
 		</jdbcConnection>
 		<javaTypeResolver>
@@ -38,7 +36,7 @@
 		<table tableName="content" domainObjectName="Content"></table>
 		<table tableName="permission" domainObjectName="Permission"></table>
 		<table tableName="gender" domainObjectName="Gender"></table>
-		<table tableName="user" domainObjectName="User"></table> 
+		<table tableName="user" domainObjectName="User"></table>
 		<table tableName="sequence" domainObjectName="Sequence"></table>
 		<table tableName="contentType" domainObjectName="ContentType"></table>
 	</context>

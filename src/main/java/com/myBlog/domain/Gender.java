@@ -1,23 +1,23 @@
 package com.myBlog.domain;
 
 public class Gender {
-    private Integer gender;
+	private Integer gender;
 
-    private String genderName;
+	private String genderName;
 
-    public Integer getGender() {
-        return gender;
-    }
+	public Integer getGender() {
+		return gender;
+	}
 
-    public void setGender(Integer gender) {
-        this.gender = gender;
-    }
+	public void setGender(Integer gender) {
+		this.gender = gender;
+	}
 
-    public String getGenderName() {
-        return genderName;
-    }
+	public String getGenderName() {
+		return genderName;
+	}
 
-    public void setGenderName(String genderName) {
-        this.genderName = genderName == null ? null : genderName.trim();
-    }
+	public void setGenderName(String genderName) {
+		this.genderName = genderName == null ? null : genderName.trim();
+	}
 }

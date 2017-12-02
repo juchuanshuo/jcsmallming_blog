@@ -11,7 +11,7 @@ import org.mybatis.generator.config.xml.ConfigurationParser;
 import org.mybatis.generator.exception.XMLParserException;
 import org.mybatis.generator.internal.DefaultShellCallback;
 
-public class ss {
+public class Generator {
 	public static void main(String[] args) throws Exception{
 		List<String> warnings = new ArrayList<String>();
 		boolean overwrite = true;

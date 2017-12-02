@@ -27,7 +27,8 @@
 									and ${criterion.condition} #{criterion.value}
 								</when>
 								<when test="criterion.betweenValue">
-									and ${criterion.condition} #{criterion.value} and
+									and ${criterion.condition} #{criterion.value}
+									and
 									#{criterion.secondValue}
 								</when>
 								<when test="criterion.listValue">
@@ -59,7 +60,8 @@
 									and ${criterion.condition} #{criterion.value}
 								</when>
 								<when test="criterion.betweenValue">
-									and ${criterion.condition} #{criterion.value} and
+									and ${criterion.condition} #{criterion.value}
+									and
 									#{criterion.secondValue}
 								</when>
 								<when test="criterion.listValue">
@@ -77,7 +79,8 @@
 		</where>
 	</sql>
 	<sql id="Base_Column_List">
-		user_id, user_name, pass_word, permission, address, email, photo, gender,
+		user_id, user_name, pass_word, permission, address, email,
+		photo, gender,
 		phonenum,
 		detail
 	</sql>
@@ -115,14 +118,19 @@
 		</if>
 	</delete>
 	<insert id="insert" parameterType="com.myBlog.domain.User">
-		insert into user (user_id, user_name, pass_word,
+		insert into user (user_id,
+		user_name, pass_word,
 		permission, address, email,
-		photo, gender, phonenum,
+		photo, gender,
+		phonenum,
 		detail)
-		values (#{userId,jdbcType=INTEGER}, #{userName,jdbcType=CHAR},
+		values (#{userId,jdbcType=INTEGER},
+		#{userName,jdbcType=CHAR},
 		#{passWord,jdbcType=CHAR},
-		#{permission,jdbcType=INTEGER}, #{address,jdbcType=CHAR}, #{email,jdbcType=CHAR},
-		#{photo,jdbcType=VARCHAR}, #{gender,jdbcType=INTEGER},
+		#{permission,jdbcType=INTEGER}, #{address,jdbcType=CHAR},
+		#{email,jdbcType=CHAR},
+		#{photo,jdbcType=VARCHAR},
+		#{gender,jdbcType=INTEGER},
 		#{phonenum,jdbcType=INTEGER},
 		#{detail,jdbcType=VARCHAR})
 	</insert>
@@ -241,15 +249,22 @@
 	<update id="updateByExample" parameterType="map">
 		update user
 		set user_id = #{record.userId,jdbcType=INTEGER},
-		user_name = #{record.userName,jdbcType=CHAR},
-		pass_word = #{record.passWord,jdbcType=CHAR},
-		permission = #{record.permission,jdbcType=INTEGER},
-		address = #{record.address,jdbcType=CHAR},
+		user_name =
+		#{record.userName,jdbcType=CHAR},
+		pass_word =
+		#{record.passWord,jdbcType=CHAR},
+		permission =
+		#{record.permission,jdbcType=INTEGER},
+		address =
+		#{record.address,jdbcType=CHAR},
 		email = #{record.email,jdbcType=CHAR},
 		photo = #{record.photo,jdbcType=VARCHAR},
-		gender = #{record.gender,jdbcType=INTEGER},
-		phonenum = #{record.phonenum,jdbcType=INTEGER},
-		detail = #{record.detail,jdbcType=VARCHAR}
+		gender =
+		#{record.gender,jdbcType=INTEGER},
+		phonenum =
+		#{record.phonenum,jdbcType=INTEGER},
+		detail =
+		#{record.detail,jdbcType=VARCHAR}
 		<if test="_parameter != null">
 			<include refid="Update_By_Example_Where_Clause" />
 		</if>
@@ -289,21 +304,25 @@
 	</update>
 	<update id="updateByPrimaryKey" parameterType="com.myBlog.domain.User">
 		update user
-		set user_name = #{userName,jdbcType=CHAR},
-		pass_word = #{passWord,jdbcType=CHAR},
+		set
+		user_name = #{userName,jdbcType=CHAR},
+		pass_word =
+		#{passWord,jdbcType=CHAR},
 		permission = #{permission,jdbcType=INTEGER},
 		address = #{address,jdbcType=CHAR},
 		email = #{email,jdbcType=CHAR},
 		photo = #{photo,jdbcType=VARCHAR},
 		gender = #{gender,jdbcType=INTEGER},
 		phonenum = #{phonenum,jdbcType=INTEGER},
-		detail = #{detail,jdbcType=VARCHAR}
+		detail =
+		#{detail,jdbcType=VARCHAR}
 		where user_id = #{userId,jdbcType=INTEGER}
 	</update>
-	
+
 	<!-- 以下为自己编写部分 -->
 	<select id="findByUserName" parameterType="String"
 		resultType="com.myBlog.domain.User">
-		select * from user where user_name = #{0} and pass_word = #{1}
+		select * from user where user_name = #{0} and pass_word =
+		#{1}
 	</select>
 </mapper>

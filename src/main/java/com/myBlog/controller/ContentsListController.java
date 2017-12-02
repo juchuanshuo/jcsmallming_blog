@@ -47,7 +47,7 @@ public class ContentsListController {
 		PageInfo page = new PageInfo(content, 5);
 		return page;
 	}
-	
+
 	@RequestMapping(value = "/main", method = RequestMethod.POST)
 	@ResponseBody
 	public PageInfo mainList() {
@@ -62,7 +62,7 @@ public class ContentsListController {
 		PageInfo page = new PageInfo(content, 5);
 		return page;
 	}
-	
+
 	@RequestMapping(value = "/type", method = RequestMethod.POST)
 	@ResponseBody
 	public ArrayList<ContentType> getType() {
@@ -74,13 +74,13 @@ public class ContentsListController {
 		}
 		return al;
 	}
-	
+
 	@RequestMapping(value = "/content", method = RequestMethod.GET)
 	@ResponseBody
 	public ModelAndView getPage(@RequestParam("id") int id) {
 		return new ModelAndView("blog/blog");
 	}
-	
+
 	@RequestMapping(value = "/content/{id}", method = RequestMethod.GET)
 	@ResponseBody
 	public Content getById(@PathVariable("id") int id) {
@@ -100,7 +100,7 @@ public class ContentsListController {
 		result.setDate(date);
 		return result;
 	}
-	
+
 	@RequestMapping(value = "/edit/{contentId}", method = RequestMethod.POST)
 	@ResponseBody
 	public Map<String, Object> edit(Content content) {
