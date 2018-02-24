@@ -412,4 +412,8 @@
 		from content c left
 		join contentType t on c.content_type = t.content_type
 	</select>
+	<delete id="deleteById" parameterType="com.myBlog.domain.Content">
+		delete from content
+		where content_id = #{id,jdbcType=VARCHAR}
+	</delete>
 </mapper>

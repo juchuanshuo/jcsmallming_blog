@@ -93,6 +93,9 @@
 				});
 				getContent($(this).attr("edit-id"));
 			});
+			$(document).on("click", ".delete_btn", function() {
+				deleteById($(this).attr("delete-id"));
+			});
 			$("#editModal").on("hidden.bs.modal", function() {
 				UE.getEditor('editor2').destroy();
 				$(this).removeData("bs.modal");
@@ -129,7 +132,7 @@
 						var td5 = $("<td></td>").append(result.list[i].pageviews);
 						var td6 = $("<td></td>").append(result.list[i].contenState);
 						var td7 = $("<td></td>").append(result.list[i].date);
-						var td8 = $("<td></td>").append('<button class="btn btn-default btn-sm edit_btn" edit-id='+result.list[i].contentId+'><span class="glyphicon glyphicon-pencil"></span>编辑</button><button class="btn btn-default btn-sm "><span class="glyphicon glyphicon-trash"></span>删除</button>');
+						var td8 = $("<td></td>").append('<button class="btn btn-default btn-sm edit_btn" edit-id='+result.list[i].contentId+'><span class="glyphicon glyphicon-pencil"></span>编辑</button><button class="btn btn-default btn-sm delete_btn" delete-id='+result.list[i].contentId+'><span class="glyphicon glyphicon-trash"></span>删除</button>');
 						$("<tr></tr>").append(td1).append(td2).append(td3).append(td4).append(td5).append(td6).append(td7).append(td8).appendTo("#contentList");
 					}
 					$("#contentList").trigger('create');
@@ -239,6 +242,23 @@
 			//把ul加入到nav
 			var navEle = $("<nav></nav>").append(ul);
 			navEle.appendTo("#page_nav_area");
+		}
+		
+		function deleteById(id) {
+			
+			$.ajax({
+				type : "POST",
+				dataType : "json",
+				url : "/list/delete/" + id,
+				contentType : "application/x-www-form-urlencoded",
+				success : function(result) {
+					alert(result.result);
+					location.reload();
+				},
+				error : function(data) {
+					alert("error:" + data.responseText);
+				}
+			});
 		}
 	</script>
 </body>

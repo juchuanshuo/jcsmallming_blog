@@ -43,7 +43,6 @@ public class ContentsListController {
 			date = content.get(i).getCreateTime().toLocaleString();
 			content.get(i).setDate(date);
 		}
-		;
 		PageInfo page = new PageInfo(content, 5);
 		return page;
 	}
@@ -80,7 +79,20 @@ public class ContentsListController {
 	public ModelAndView getPage(@RequestParam("id") int id) {
 		return new ModelAndView("blog/blog");
 	}
-
+	
+	@ResponseBody
+	@RequestMapping("/delete/{id}")
+	public Map<String, Object> delete(@PathVariable("id") String id) {
+		int count = contentMapper.deleteById(id);
+		Map<String, Object> result = new HashMap<String,Object>();
+		if(count!=0){
+			result.put("result", "success");
+		}else {
+			result.put("result", "fail");
+		}
+		return result;
+	}
+	
 	@RequestMapping(value = "/content/{id}", method = RequestMethod.GET)
 	@ResponseBody
 	public Content getById(@PathVariable("id") int id) {
