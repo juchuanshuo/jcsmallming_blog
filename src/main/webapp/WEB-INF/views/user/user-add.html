@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="icon" href="/favicon.ico">
+<title>添加文章</title>
+</head>
+<body>
+	<div class="container">
+		<form role="form" id="form-article-add">
+		<br><br>
+			<div class="form-group">
+				<label for="userName">用户名：</label> <input type="text" class="form-control" value="" placeholder="" id="userName" name="userName">
+			</div>
+			<div class="form-group">
+				<label for="passWord">密码：</label> <input type="text" class="form-control" value="" placeholder="" id="passWord" name="passWord">
+			</div>
+			<div class="form-group">
+				<!-- <button onClick="article_save_submit();" class="btn btn-primary radius" type="submit"><i class="Hui-iconfont">&#xe632;</i> 保存并提交审核</button>
+				<button onClick="article_save();" class="btn btn-secondary radius" type="button"><i class="Hui-iconfont">&#xe632;</i> 保存草稿</button>
+				<button onClick="removeIframe();" class="btn btn-default radius" type="button">&nbsp;&nbsp;取消&nbsp;&nbsp;</button> -->
+				<button onClick="article_save_submit();" class="btn btn-primary" type="button">发布</button>
+
+			</div>
+		</form>
+	</div>
+	<!-- <script type="text/javascript"
+		src="/resource/lib/ueditor/1.4.3/ueditor.config.js"></script>
+	<script type="text/javascript" src="/resource/lib/ueditor/1.4.3/ueditor.all.min.js">
+		
+	</script>
+	<script type="text/javascript" src="/resource/lib/ueditor/1.4.3/lang/zh-cn/zh-cn.js"></script> -->
+	<script type="text/javascript">
+		function article_save_submit() {
+			$.ajax({
+				type : "GET",
+				dataType : "json",
+				url : "/user/add",
+				data : $('#form-article-add').serialize(),
+				contentType : "application/x-www-form-urlencoded",
+				success : function(result) {
+					alert('添加结果：' + result.result, 3000);
+					$("#userName").val("");
+					$("passWord").val("");
+				},
+				error : function(data) {
+					alert("error:" + data.responseText);
+				}
+			});
+			//document.getElementById("form-article-add").submit();
+		} 
+	</script>
+</body>
+</html>

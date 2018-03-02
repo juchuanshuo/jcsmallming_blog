@@ -31,4 +31,10 @@ public interface UserMapper {
 	int updateByPrimaryKey(User record);
 
 	User findByUserName(String userName, String passWord);
+
+	List<User> getAll();
+
+	List<User> getByName(String userName);
+
+	int deleteById(int id);
 }

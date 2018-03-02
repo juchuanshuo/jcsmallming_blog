@@ -18,16 +18,14 @@
 	<div class="container">
 		<div class="row">
 			<h3 class="page-header">
-				<small>首页 > 文章管理 > 文章管理</small>
+				<small>首页 > 用户管理 > 用户管理</small>
 			</h3>
 		</div>
 		<div id="query" class="row">
 			<div class="col-md-8 col-md-offset-2">
 				<form role="form" class="form-inline">
-					<span class="glyphicon"> <select class="form-control" id="contentType">
-					</select>
-					</span> <input type="text" class="form-control" id="name" placeholder="文件名">
-					<button type="submit" class="btn btn-primary">
+					</span> <input type="text" class="form-control" id="userName2" placeholder="用户名">
+					<button type="button" class="btn btn-primary" onclick = "getList(1)">
 						<span class="glyphicon glyphicon-search"></span>查询
 					</button>
 				</form>
@@ -36,13 +34,12 @@
 
 		</div>
 		<div id="button" class="row">
-			<button class="btn btn-danger" onclick="forTest()">批量删除</button>
-			<button class="btn btn-success" data-toggle="modal" href="article_add" data-target="#myModal">新增文章</button>
+			<button class="btn btn-success" data-toggle="modal" href="/user/user-add" data-target="#myModal">新增用户</button>
 			<!-- 模态框（Modal） -->
 			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 				<div class="modal-dialog" style="width: 100%; height: 100%">
 					<div class="modal-content"></div>
-					<!-- /.modal-content -->
+					<!-- /.modal-user -->
 				</div>
 				<!-- /.modal -->
 			</div>
@@ -59,17 +56,13 @@
 			<table class="table table-hover table-striped table-bordered" id="listTable">
 				<thead>
 					<tr>
-						<th width="80">ID</th>
-						<th>标题</th>
-						<th width="80">分类</th>
-						<th width="100">更新时间</th>
-						<th width="75">浏览次数</th>
-						<th width="75">发布状态</th>
+						<th width="80">用户ID</th>
+						<th>用户名</th>
 						<th width="100">创建时间</th>
 						<th width="140">操作</th>
 					</tr>
 				</thead>
-				<tbody id="contentList">
+				<tbody id="userList">
 
 				</tbody>
 			</table>
@@ -85,13 +78,12 @@
 	<script src="/resource/bootstrap-3.3.7/js/bootstrap.min.js"></script> -->
 	<script type="text/javascript">
 		$(function() {
-			getType("#contentType");
 			getList(1);
 			$(document).on("click", ".edit_btn", function() {
 				$("#editModal").modal({
-					remote : "article_edit"
+					remote : "/user/user-edit"
 				});
-				getContent($(this).attr("edit-id"));
+				getuser($(this).attr("edit-id"));
 			});
 			$(document).on("click", ".delete_btn", function() {
 				deleteById($(this).attr("delete-id"));
@@ -103,7 +95,7 @@
 			$("#myModal").on("hidden.bs.modal", function() {
 				$(this).removeData("bs.modal");
 				UE.getEditor('editor').destroy();
-			});
+			}); 
 		});
 		function forTest() {
 			$("#myModal").modal({
@@ -112,81 +104,72 @@
 		}
 
 		function getList(pn) {
+			/* if($("#userName").val()){
+				goodName = $("#userName").val();
+			} */
+			userName = $("#userName2").val();
 			$.ajax({
 				type : "POST",
 				dataType : "json",
-				url : "/list",
+				url : "/user/search",
 				data : {
-					"pn" : pn
+					"pn" : pn,
+					"userName" : userName
 				},
 				contentType : "application/x-www-form-urlencoded",
 				success : function(result) {
-					$("#contentList").empty();
+					$("#userList").empty();
 					$("#pageInfo").empty();
 					$("#pageInfo").html("当前为 " + result.pageNum + " 页，共 " + result.total + " 条数据，共 " + result.pages + " 页");
 					for (var i = 0; i < result.list.length; i++) {
-						var td1 = $("<td></td>").append(result.list[i].contentId);
-						var td2 = $("<td></td>").append('<a href = "/list/content?id=' + result.list[i].contentId + '">' + result.list[i].contentName + '</a>');
-						var td3 = $("<td></td>").append(result.list[i].typeName);
-						var td4 = $("<td></td>").append(result.list[i].updateTime);
-						var td5 = $("<td></td>").append(result.list[i].pageviews);
-						var td6 = $("<td></td>").append(result.list[i].contenState);
-						var td7 = $("<td></td>").append(result.list[i].date);
-						var td8 = $("<td></td>").append('<button class="btn btn-default btn-sm edit_btn" edit-id='+result.list[i].contentId+'><span class="glyphicon glyphicon-pencil"></span>编辑</button><button class="btn btn-default btn-sm delete_btn" delete-id='+result.list[i].contentId+'><span class="glyphicon glyphicon-trash"></span>删除</button>');
-						$("<tr></tr>").append(td1).append(td2).append(td3).append(td4).append(td5).append(td6).append(td7).append(td8).appendTo("#contentList");
+						var td1 = $("<td></td>").append(result.list[i].userId);
+						var td2 = $("<td></td>").append('<a href = "/list/user?id=' + result.list[i].userId + '">' + result.list[i].userName + '</a>');
+						var td3 = $("<td></td>").append(result.createtime);
+						var td4 = $("<td></td>").append('<button class="btn btn-default btn-sm edit_btn" edit-id='+result.list[i].userId+'><span class="glyphicon glyphicon-pencil"></span>编辑</button><button class="btn btn-default btn-sm delete_btn" delete-id='+result.list[i].userId+'><span class="glyphicon glyphicon-trash"></span>删除</button>');
+						$("<tr></tr>").append(td1).append(td2).append(td3).append(td4).appendTo("#userList");
 					}
-					$("#contentList").trigger('create');
+					$("#userList").trigger('create');
 					build_page_nav(result);
-					//$("contentType");
+					//$("userType");
 				},
 				error : function(data) {
 					alert("error:" + data.responseText);
 				}
 			});
 		}
-		function getType(ele) {
+		
+		function getuser(id) {
 			$.ajax({
 				type : "POST",
 				dataType : "json",
-				url : "/list/type",
-				async : false,
-				data : "",
+				url : "/user/getUser/" + id,
 				contentType : "application/x-www-form-urlencoded",
 				success : function(result) {
-					for (var i = 0; i < result.length; i++) {
-						$(ele).append('<option value="'+result[i].contentType+'">' + result[i].typeName + '</option>');
-					}
-					//$("contentType");
-				},
-				error : function(data) {
-					alert("error:" + data.responseText);
-				}
-			});
-		}
-		function getContent(id) {
-			$.ajax({
-				type : "POST",
-				dataType : "json",
-				url : "/list/getContent/" + id,
-				contentType : "application/x-www-form-urlencoded",
-				success : function(result) {
-					getType("#contentType3");
-					$("#contentName").val(result.contentName);
-					$("#contentType3").val(result.contentType);
-					$("#summary").val(result.summary);
+					$("#userName").val(result.userName);
 					$("#edit_tn").attr("edit-id", id);
-					var ue = UE.getEditor('editor2');
-					ue.addListener("ready", function() {
-						// editor准备好之后才可以使用
-						ue.setContent(result.content);
-					});
 				},
 				error : function(data) {
 					alert("error:" + data.responseText);
 				}
 			});
 		}
-
+		
+		function deleteById(id){
+			$.ajax({
+				type : "POST",
+				dataType : "json",
+				url : "/user/delete/" + id,
+				contentType : "application/x-www-form-urlencoded",
+				success : function(result) {
+					alert(result.result);
+					location.reload();
+				},
+				error : function(data) {
+					alert("error:" + data.responseText);
+				}
+			});
+		}
+		
 		function build_page_nav(result) {
 			//page_nav_area
 			$("#page_nav_area").empty();
@@ -242,22 +225,6 @@
 			//把ul加入到nav
 			var navEle = $("<nav></nav>").append(ul);
 			navEle.appendTo("#page_nav_area");
-		}
-		
-		function deleteById(id) {
-			$.ajax({
-				type : "POST",
-				dataType : "json",
-				url : "/list/delete/" + id,
-				contentType : "application/x-www-form-urlencoded",
-				success : function(result) {
-					alert(result.result);
-					location.reload();
-				},
-				error : function(data) {
-					alert("error:" + data.responseText);
-				}
-			});
 		}
 	</script>
 </body>

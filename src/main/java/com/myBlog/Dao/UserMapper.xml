@@ -325,4 +325,21 @@
 		select * from user where user_name = #{0} and pass_word =
 		#{1}
 	</select>
+	
+	<select id="getAll" resultMap="BaseResultMap">
+		select *
+		from user
+	</select>
+
+	<select id="getByName" resultMap="BaseResultMap">
+		select *
+		from user where
+		user_name = #{userName,jdbcType=CHAR}
+	</select>
+
+	<delete id="deleteById" parameterType="com.myBlog.domain.User">
+		delete from user
+		where
+		user_id = #{id,jdbcType=INTEGER}
+	</delete>
 </mapper>
