@@ -46,6 +46,16 @@ public class ContentsListController {
 		PageInfo page = new PageInfo(content, 5);
 		return page;
 	}
+	
+	@RequestMapping(value = "/typelist", method = RequestMethod.POST)
+	@ResponseBody
+	public PageInfo typelist(@RequestParam(value = "pn", defaultValue = "1") Integer pn) {
+		PageHelper.startPage(pn, 5);
+		List<ContentType> contentType = contentTypeMapper.selectAll();
+		PageInfo page = new PageInfo(contentType, 5);
+		return page;
+	}
+
 
 	@RequestMapping(value = "/main", method = RequestMethod.POST)
 	@ResponseBody

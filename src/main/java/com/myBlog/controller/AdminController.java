@@ -39,10 +39,19 @@ public class AdminController {
 	public ModelAndView addList() {
 		return new ModelAndView("content/list");
 	}
+	@RequestMapping("/type_list")
+	public ModelAndView typeList() {
+		return new ModelAndView("type/list");
+	}
 
 	@RequestMapping("/article_add")
 	public ModelAndView article_add() {
 		return new ModelAndView("content/article-add");
+	}
+
+	@RequestMapping("/type_add")
+	public ModelAndView type_add() {
+		return new ModelAndView("type/type-add");
 	}
 
 	@RequestMapping("/article_edit")
