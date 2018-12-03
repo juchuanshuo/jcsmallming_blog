@@ -1,57 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-<meta name="description" content="">
-<meta name="author" content="">
-<link rel="icon" href="../../favicon.ico">
-
-<title id="contentTitle"></title>
-
-
-<!-- Bootstrap core CSS -->
-<link href="/resource/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet">
-
-<!-- Custom styles for this template -->
-<link href="/resource/bootstrap-3.3.7/css/blog.css" rel="stylesheet">
-
-<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-<!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<link rel="icon" href="../../favicon.ico">
+	<title id="contentTitle"></title>
+	<!-- Custom styles for this template -->
+	<link href="/resource/bootstrap-3.3.7/css/blog.css" rel="stylesheet">
+	<link rel="stylesheet" href="/resource/vue-material/font.css">
+	<link rel="stylesheet" href="/resource/vue-material/icon+material.css">
+	<link rel="stylesheet" href="/resource/materialize/css/materialize.min.css">
 </head>
 
 <body>
-
-
+	<!-- 这里是导航区域 -->
+	<div id="nav-bar" class="z-depth-5" style="margin-top:15px">
+		<nav style="background-color:rgb(0, 0, 0)">
+			<div class="nav-wrapper">
+				<a href="/" class="brand-logo" style="margin-left:15%">Jcsmallming</a>
+				<form class="right">
+					<div class="input-field">
+						<input id="search" type="search" required>
+						<label class="label-icon" for="search"><i class="material-icons">search</i></label>
+						<i class="material-icons">close</i>
+					</div>
+				</form>
+				<ul id="nav-mobile" class="right hide-on-med-and-down">
+					<li><a href="/">首页</a></li>
+					<li class="active"><a href="/content.html">文章</a></li>
+					<li><a href="/talk.html">施工中</a></li>
+					<li><a href="/aboutMe.html">施工中</a></li>
+					<li><a href="/messageBoard.html">施工中</a></li>
+					<li><a href="/transfer.html">施工中</a></li>
+				</ul>
+			</div>
+		</nav>
+	</div>
 
 	<div class="container">
-
-		<div class="blog-header row">
-			<img alt="这里是图片" src="/resource/img/2.jpg" width="100%" height="100%">
+		<div id="contentContainer" class="container" style="margin-top:50px">
 		</div>
-		<div class="row">
-			<nav class="navbar navbar-inverse">
-				<ul class="nav navbar-nav">
-					<li><a href="/">首页</a></li>
-					<li class = "active"><a href="/content.html">文章</a></li>
-					<li><a href="/talk.html">杂谈</a></li>
-					<li><a href="/aboutMe.html">关于我</a></li>
-					<li><a href="/messageBoard.html">留言板</a></li>
-					<li><a href="/transfer.html">传送门</a></li>
-				</ul>
-			</nav>
-		</div>
+		<div class="row" style="width:350px;position:absolute;top:100px;right: 20px;">
+			<div>
+				<div class="card">
+					<nav class="nav-extended" style="background-color:black">
+						<div class=" nav-content">
+							<ul class="tabs tabs-transparent">
+								<li class="tab"><a class="active" href="#test1">推荐文章</a></li>
+								<li class="tab"><a href="#test2">关注博主</a></li>
+								<li class="tab"><a href="#test3">友情链接</a></li>
+							</ul>
+						</div>
+					</nav>
+					<div id="test1" class="z-depth-5" style="height:320px">
+						<div class="card-action">
+							<a href="#">这是一篇文章</a>
+						</div>
+						<div class="card-action">
+							<a href="#">这是一篇文章</a>
+						</div>
+						<div class="card-action">
+							<a href="#">这是一篇文章</a>
+						</div>
+						<div class="card-action">
+							<a href="#">这是一篇文章</a>
+						</div>
+						<div class="card-action">
+							<a href="#">这是一篇文章</a>
+						</div>
+					</div>
+					<div id="test2" class="z-depth-5" style="height:320px">
 
+					</div>
+					<div id="test3" class="z-depth-5" style="height:320px">
+
+					</div>
+				</div>
+			</div>
+		</div>
 
 		<br>
 		<div class="row">
-
-			<div class="col-sm-8 blog-main">
+			<div class="col s9 m9 blog-main">
 
 				<div class="blog-post">
 					<h2 class="blog-post-title" id="contentName"></h2>
@@ -63,67 +98,42 @@
 					<div id="content"></div>
 				</div>
 				<!-- /.blog-post -->
-
-				<nav>
-					<ul class="pager">
-						<li><a href="#">上一篇</a></li>
-						<li><a href="#">下一篇</a></li>
-					</ul>
-				</nav>
+				<ul class="pager">
+					<li>上一篇:<a id="lastContent" href="">内容</a></li>
+					<li>下一篇:<a id="nextContent" href="">内容</a></li>
+				</ul>
 
 			</div>
 			<!-- /.blog-main -->
-
-			<div class="col-sm-3 blog-sidebar" style="margin-left: 15px">
-				<div class="sidebar-module sidebar-module-inset">
-					<h4>关注我</h4>
-					<ol class="list-unstyled">
-						<li><a href="#">github</a></li>
-						<li><a href="#">知乎</a></li>
-						<li><a href="#">微博</a></li>
-					</ol>
-				</div>
-				<div class="sidebar-module sidebar-module-inset">
-					<h4>友情链接</h4>
-					<ol class="list-unstyled">
-						<li><a href="http://115.159.107.178">JiatLn' Blog</a></li>
-						<li><a href="#">广告位招租</a></li>
-						<li><a href="#">广告位招租</a></li>
-					</ol>
-				</div>
-			</div>
-			<!-- /.blog-sidebar -->
-
 		</div>
 		<!-- /.row -->
 
 	</div>
 	<!-- /.container -->
 
-	<footer class="blog-footer">
-		<p>作者@小明</p>
-		<p>
-			<a href="#">回到顶部</a>
-		</p>
+	<!-- 以下是footer区域 -->
+	<footer class="page-footer" style="background-color:white">
+		<div class="footer-copyright" style="color: black">
+			<div class="container center">
+				© 2018 Copyright Jcsmallming
+			</div>
+		</div>
 	</footer>
-
-
-	<!-- Bootstrap core JavaScript
-    ================================================== -->
-	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<a id="top" class="btn btn-floating waves-effect waves-light" style="position: fixed;bottom:30px;right: 30px;display: none;"><i
+		 class="material-icons">publish</i></a>
 	<script type="text/javascript" src="/resource/jquery/jquery-3.2.1.min.js"></script>
-	<!-- Include all compiled plugins (below), or include individual files as needed -->
-	<script src="/resource/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+	<script src="/resource/materialize/js/materialize.min.js"></script>
 	<script type="text/javascript">
-		$(function() {
+		$(function () {
+			$('.carousel.carousel-slider').carousel({ full_width: true });
 			var href = location.search;
 			var id = href.split("=");
 			$.ajax({
-				type : "POST",
-				dataType : "json",
-				url : "/list/content/" + id[1],
-				contentType : "application/x-www-form-urlencoded",
-				success : function(result) {
+				type: "POST",
+				dataType: "json",
+				url: "/list/content/" + id[1],
+				contentType: "application/x-www-form-urlencoded",
+				success: function (result) {
 					$("#content").html(result.content);
 					$("#summary").html(result.summary);
 					$("#date").html(result.date);
@@ -131,7 +141,7 @@
 					$("#contentName").html(result.contentName);
 					$("#author").text(result.author);
 				},
-				error : function(data) {
+				error: function (data) {
 					alert("error:" + data.responseText);
 				}
 			});
