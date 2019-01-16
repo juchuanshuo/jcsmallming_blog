@@ -189,6 +189,6 @@
 	</update>
 	<!-- 以下为自己编写部分 -->
 	<select id="getNowId" resultType="int">
-		select nextval("Testseq")
+		select nextval("contentSeq")
 	</select>
 </mapper>

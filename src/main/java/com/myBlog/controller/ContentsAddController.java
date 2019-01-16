@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.myBlog.Dao.ContentMapper;
 import com.myBlog.Dao.ContentTypeMapper;
 import com.myBlog.Dao.SequenceMapper;
+import com.myBlog.Dao.TypeSequenceMapper;
 import com.myBlog.domain.Content;
 import com.myBlog.domain.ContentType;
 
@@ -28,6 +29,8 @@ public class ContentsAddController {
 	private ContentTypeMapper contentTypeMapper;
 	@Resource
 	private SequenceMapper sequenceMapper;
+	@Resource
+	private TypeSequenceMapper typeSequenceMapper;
 
 	@RequestMapping()
 	@ResponseBody
@@ -44,10 +47,12 @@ public class ContentsAddController {
 		}
 		return s;
 	}
+
 	@RequestMapping(value = "/addType", method = RequestMethod.GET)
 	@ResponseBody
 	public Map<String, Object> addType(ContentType model, HttpServletRequest request) {
 		Map<String, Object> s = new HashMap<String, Object>();
+		model.setContentType(typeSequenceMapper.getNowId());
 		if (contentTypeMapper.insert(model) > 0) {
 			s.put("result", "SUCCESS");
 		} else {
@@ -55,4 +60,5 @@ public class ContentsAddController {
 		}
 		return s;
 	}
+	
 }

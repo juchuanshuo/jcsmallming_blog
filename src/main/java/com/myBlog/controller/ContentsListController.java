@@ -67,7 +67,6 @@ public class ContentsListController {
 			date = content.get(i).getCreateTime().toLocaleString();
 			content.get(i).setDate(date);
 		}
-		;
 		PageInfo page = new PageInfo(content, 5);
 		return page;
 	}
@@ -110,6 +109,8 @@ public class ContentsListController {
 		Content result = contentMapper.selectByPrimaryKey(id);
 		date = result.getCreateTime().toLocaleString();
 		result.setDate(date);
+		ContentType type = contentTypeMapper.selectByPrimaryKey(result.getContentType());
+		result.setTypeName(type.getTypeName());
 		return result;
 	}
 

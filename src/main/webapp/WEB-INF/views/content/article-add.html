@@ -1,24 +1,31 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="UTF-8">
-<link rel="icon" href="/favicon.ico">
-<title>添加文章</title>
+	<meta charset="UTF-8">
+	<link rel="icon" href="/favicon.ico">
+	<title>添加文章</title>
 </head>
+
 <body>
 	<div class="container">
 		<form role="form" id="form-article-add">
-		<br><br>
+			<br><br>
 			<div class="form-group">
-				<label for="contentName">文章标题：</label> <input type="text" class="form-control" value="" placeholder="" id="contentName" name="contentName">
+				<label for="contentName">文章标题：</label> <input type="text" class="form-control" value="" placeholder="" id="contentName"
+				 name="contentName">
 			</div>
 			<div class="form-group">
-				<label>文章类型：</label> <select name="contentType" id = "contentType2" class="form-control">
+				<label>文章类型：</label> <select name="contentType" id="contentType2" class="form-control">
 				</select>
 			</div>
 			<div class="form-group">
 				<label>文章摘要：</label>
-					<textarea name="summary" id="summary" placeholder="说点什么..." class="form-control" rows="3"></textarea>
+				<textarea name="summary" id="summary" placeholder="说点什么..." class="form-control" rows="3"></textarea>
+			</div>
+			<div class="form-group">
+				<label>缩略图</label>
+				<input type="file" name="file">
 			</div>
 			<div class="form-group">
 				<label>文章内容：</label>
@@ -41,32 +48,32 @@
 	</script>
 	<script type="text/javascript" src="/resource/lib/ueditor/1.4.3/lang/zh-cn/zh-cn.js"></script> -->
 	<script type="text/javascript">
-		$(function(){
+		$(function () {
 			$.ajax({
-				type : "POST",
-				dataType : "json",
-				url : "/list/type",
-				data : "",
-				contentType : "application/x-www-form-urlencoded",
-				success : function(result) {
+				type: "POST",
+				dataType: "json",
+				url: "/list/type",
+				data: "",
+				contentType: "application/x-www-form-urlencoded",
+				success: function (result) {
 					for (var i = 0; i < result.length; i++) {
-						$("#contentType2").append('<option value="'+result[i].contentType+'">' + result[i].typeName + '</option>');
+						$("#contentType2").append('<option value="' + result[i].contentType + '">' + result[i].typeName + '</option>');
 					}
 					//$("contentType");
 				},
-				error : function(data) {
+				error: function (data) {
 					alert("error:" + data.responseText);
 				}
 			});
 		});
 		function article_save_submit() {
 			$.ajax({
-				type : "GET",
-				dataType : "json",
-				url : "/add",
-				data : $('#form-article-add').serialize(),
-				contentType : "application/x-www-form-urlencoded",
-				success : function(result) {
+				type: "GET",
+				dataType: "json",
+				url: "/add",
+				data: $('#form-article-add').serialize(),
+				contentType: "application/x-www-form-urlencoded",
+				success: function (result) {
 					alert('发表结果：' + result.result, 3000);
 					$("#contentName").val("");
 					$("#contentType2").val("0");
@@ -74,17 +81,18 @@
 					var ue = UE.getEditor('editor');
 					ue.setContent("");
 				},
-				error : function(data) {
+				error: function (data) {
 					alert("error:" + data.responseText);
 				}
 			});
 			//document.getElementById("form-article-add").submit();
 		}
 
-		$(function() {
+		$(function () {
 			var ue = UE.getEditor('editor');
 
 		});
 	</script>
 </body>
+
 </html>
