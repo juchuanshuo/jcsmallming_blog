@@ -293,9 +293,15 @@
 	<script type="text/javascript" src="/resource/jquery/jquery-3.2.1.min.js"></script>
 	<script src="/resource/materialize/js/materialize.min.js"></script>
 	<script type="text/javascript">
+		var pn = 1;
+		var imageHeight = 100;
+		var imagewidth = 80;
+		var br = "";
 		$(function () {
 			$("#top").click(function () {
-				$("html,body").animate({ scrollTop: 0 }, 500);
+				$("html,body").animate({
+					scrollTop: 0
+				}, 500);
 			});
 			var t1 = window.setInterval(function () {
 				if ($(document).scrollTop() > 0) {
@@ -304,9 +310,6 @@
 					$("#top").fadeOut();
 				}
 			}, 10);
-			var imageHeight = 100;
-			var imagewidth = 80;
-			var br = "";
 			$(".button-collapse").sideNav({
 				menuWidth: 180, // Default is 240
 				closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
@@ -320,38 +323,71 @@
 				imagewidth = 135;
 				br = "</br>";
 			}
+			$('.carousel.carousel-slider').carousel({
+				full_width: true
+			});
+			var href = location.search;
+			var id = href.split("=");
+			getPage(pn);
+			pn++;
+		});
+
+		$(window).scroll(function () {
+			if ($(document).scrollTop() >= $(document).height() - $(window).height()) { //判断是否已经滚动到页面底部；
+				getPage(pn);
+				pn++;
+			}
+		});
+
+		function getPage(pn) {
+			if (pn == 1) {
+				$("#content").empty();
+			}
 			$.ajax({
 				type: "POST",
 				dataType: "json",
-				url: "list/main",
+				url: "/list/indexList",
+				data: {
+					"pn": pn
+				},
 				contentType: "application/x-www-form-urlencoded",
 				success: function (result) {
-					$("#content").empty();
+					var onceContainer = $('<div></div>').css("dispaly", "none");
 					for (var i = 0; i < result.list.length; i++) {
+						var tiny = "";
+						if (result.list[i].tinyImg == null || result.list[i].tinyImg == "") {
+							tiny = "/resource/tiniImg/nopic.png";
+						} else {
+							tiny = result.list[i].tinyImg;
+						}
 						var row = $('<div></div>').addClass("row hoverable");
 						var divImg = $('<div></div>').addClass("col s3 m3");
-						divImg.append('<img src="/resource/tiniImg/nopic.png" width=' + imagewidth + 'px height="' + imageHeight + 'px" />');
+						divImg.append('<img src="' + tiny + '" width=' + imagewidth + 'px height="' + imageHeight + 'px" />');
 						var divContent = $('<div></div>').addClass("col s9 m9");
 						divContent.append('<span>' + result.list[i].date + '</span>');
 						divContent.append('<h5><a style="color:black" href = "list/content?id=' + result.list[i].contentId + '"><strong>' + result.list[i].contentName + '</strong></a>' + br + '<h5>');
-						let summary = result.list[i].summary;
+						let
+							summary = result.list[i].summary;
 						/* if (summary.length > 45) {
 							summary = summary.substring(0, 45) + "...";
 						} */
 						divContent.append('<span class="truncate">' + summary + '</span>' + br);
 						divContent.append('<a style="color:red;margin-bottom:0px;position:absolute" href = "list/content?id=' + result.list[i].contentId + '">>>>阅读全文</a>');
-						divContent.appendTo("#content");
+						// divContent.appendTo("#content");
 						row.append(divImg);
 						row.append(divContent);
-						row.appendTo($("#contentContainer"));
+						row.appendTo(onceContainer);
+
 					}
-					$("#content").trigger('create');
+					onceContainer.appendTo($("#contentContainer"));
+					Materialize.fadeInImage(onceContainer);
+					// $("#content").trigger('create');
 				},
 				error: function (data) {
 					alert("error:" + data.responseText);
 				}
 			});
-		});
+		}
 	</script>
 </body>
 <!-- <body style="background: #e6e6d5">

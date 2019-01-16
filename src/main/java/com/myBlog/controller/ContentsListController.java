@@ -33,6 +33,20 @@ public class ContentsListController {
 	@Resource
 	private ContentTypeMapper contentTypeMapper;
 
+	@RequestMapping(value = "/indexList", method = RequestMethod.POST)
+	@ResponseBody
+	public PageInfo indexList(@RequestParam(value = "pn", defaultValue = "1") Integer pn) {
+		PageHelper.startPage(pn, 10);
+		List<Content> content = contentMapper.getAll();
+		String date;
+		for (int i = 0; i < content.size(); i++) {
+			date = content.get(i).getCreateTime().toLocaleString();
+			content.get(i).setDate(date);
+		}
+		PageInfo page = new PageInfo(content, 10);
+		return page;
+	}
+
 	@RequestMapping()
 	@ResponseBody
 	public PageInfo list(@RequestParam(value = "pn", defaultValue = "1") Integer pn) {
@@ -46,7 +60,7 @@ public class ContentsListController {
 		PageInfo page = new PageInfo(content, 5);
 		return page;
 	}
-	
+
 	@RequestMapping(value = "/typelist", method = RequestMethod.POST)
 	@ResponseBody
 	public PageInfo typelist(@RequestParam(value = "pn", defaultValue = "1") Integer pn) {
@@ -55,7 +69,6 @@ public class ContentsListController {
 		PageInfo page = new PageInfo(contentType, 5);
 		return page;
 	}
-
 
 	@RequestMapping(value = "/main", method = RequestMethod.POST)
 	@ResponseBody
@@ -88,20 +101,20 @@ public class ContentsListController {
 	public ModelAndView getPage(@RequestParam("id") int id) {
 		return new ModelAndView("blog/blog");
 	}
-	
+
 	@ResponseBody
 	@RequestMapping("/delete/{id}")
 	public Map<String, Object> delete(@PathVariable("id") String id) {
 		int count = contentMapper.deleteById(id);
-		Map<String, Object> result = new HashMap<String,Object>();
-		if(count!=0){
+		Map<String, Object> result = new HashMap<String, Object>();
+		if (count != 0) {
 			result.put("result", "success");
-		}else {
+		} else {
 			result.put("result", "fail");
 		}
 		return result;
 	}
-	
+
 	@RequestMapping(value = "/content/{id}", method = RequestMethod.GET)
 	@ResponseBody
 	public Content getById(@PathVariable("id") int id) {
