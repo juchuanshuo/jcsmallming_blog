@@ -37,4 +37,6 @@ public interface ContentMapper {
 	List<Content> getAll();
 
 	int deleteById(String id);
+
+	int updateCount(String id);
 }

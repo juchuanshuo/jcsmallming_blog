@@ -2,33 +2,33 @@
 <html lang="en">
 
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-	<meta name="description" content="">
-	<meta name="author" content="">
-	<title>SmallMing blog</title>
-	<style type="text/css">
-		body {
-			display: flex;
-			min-height: 100vh;
-			flex-direction: column;
-		}
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<meta name="description" content="">
+<meta name="author" content="">
+<title>SmallMing blog</title>
+<style type="text/css">
+body {
+	display: flex;
+	min-height: 100vh;
+	flex-direction: column;
+}
 
-		main {
-			flex: 1 0 auto;
-		}
+main {
+	flex: 1 0 auto;
+}
 
-		header {
-			flex: 0 0 auto;
-		}
-	</style>
-	<title id="contentTitle"></title>
-	<!-- Compiled and minified CSS -->
-	<link rel="stylesheet" href="/resource/vue-material/font.css">
-	<link rel="stylesheet" href="/resource/vue-material/icon+material.css">
-	<link rel="stylesheet" href="/resource/materialize/css/materialize.min.css">
+header {
+	flex: 0 0 auto;
+}
+</style>
+<title id="contentTitle"></title>
+<!-- Compiled and minified CSS -->
+<link rel="stylesheet" href="/resource/vue-material/font.css">
+<link rel="stylesheet" href="/resource/vue-material/icon+material.css">
+<link rel="stylesheet" href="/resource/materialize/css/materialize.min.css">
 </head>
 
 <body>
@@ -41,8 +41,7 @@
 					<a href="/" class="brand-logo" style="margin-left: 15%">Jcsmallming</a>
 					<form class="right">
 						<div class="input-field">
-							<input id="search" type="search" required> <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-							<i class="material-icons">close</i>
+							<input id="search" type="search" required> <label class="label-icon" for="search"><i class="material-icons">search</i></label> <i class="material-icons">close</i>
 						</div>
 					</form>
 					<ul id="nav-mobile" class="right hide-on-med-and-down">
@@ -61,8 +60,7 @@
 							<div class="background">
 								<img src="/resource/img/office.jpg">
 							</div>
-							<a href="#!user"><img class="circle" src="/resource/img/miao.jpg"></a> <a href="#!name"><span class="white-text name">jcsmallming</span></a>
-							<a href="#!email"><span class="white-text email">jcsmallming@163.com</span></a>
+							<a href="#!user"><img class="circle" src="/resource/img/miao.jpg"></a> <a href="#!name"><span class="white-text name">jcsmallming</span></a> <a href="#!email"><span class="white-text email">jcsmallming@163.com</span></a>
 						</div>
 					</li>
 					<li><a href="content.html">文章</a></li>
@@ -72,50 +70,49 @@
 					<li><a href="transfer.html">施工中</a></li>
 				</ul>
 				<div id="button-collapse">
-					<a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a> <a href="/"
-					 class="brand-logo" style="margin-left: 15%">Jcsmallming</a>
+					<a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a> <a href="/" class="brand-logo" style="margin-left: 15%">Jcsmallming</a>
 				</div>
 			</nav>
 		</div>
 	</header>
 	<main>
-		<div class="container">
-			<div class="row">
-				<div id="contentContainer" style="margin-top: 10px" class="col s12 m8"></div>
-				<div id="showCard" class="col s1 m4" style="display: none">
-					<div class="card">
-						<nav class="nav-extended" style="background-color: black">
-							<div class=" nav-content">
-								<ul class="tabs tabs-transparent">
-									<li class="tab"><a class="active" href="#test1">推荐</a></li>
-									<li class="tab"><a href="#test2">公众号</a></li>
-									<li class="tab"><a href="#test3">友链</a></li>
-								</ul>
-							</div>
-						</nav>
-						<div id="test1" class="z-depth-5" style="height: 230px">
-							<div class="card-action">
-								<a href="#">这是一篇文章</a>
-							</div>
-							<div class="card-action">
-								<a href="#">这是一篇文章</a>
-							</div>
-							<div class="card-action">
-								<a href="#">这是一篇文章</a>
-							</div>
+	<div class="container">
+		<div class="row">
+			<div id="contentContainer" style="margin-top: 10px" class="col s12 m8"></div>
+			<div id="showCard" class="col s1 m4" style="display: none">
+				<div class="card">
+					<nav class="nav-extended" style="background-color: black">
+						<div class=" nav-content">
+							<ul class="tabs tabs-transparent">
+								<li class="tab"><a class="active" href="#test1">推荐</a></li>
+								<li class="tab"><a href="#test2">公众号</a></li>
+								<li class="tab"><a href="#test3">友链</a></li>
+							</ul>
 						</div>
-						<div id="test2" class="z-depth-5 center" style="height: 230px">
-							<img src="/resource/img/ssys.jpg" width="80%" />
+					</nav>
+					<div id="test1" class="z-depth-5" style="height: 230px">
+						<div class="card-action">
+							<a href="#">这是一篇文章</a>
 						</div>
-						<div id="test3" class="z-depth-5" style="height: 230px">
-							<div class="card-action">
-								<a href="http://oew.ink/">Jiatln'blog</a>
-							</div>
+						<div class="card-action">
+							<a href="#">这是一篇文章</a>
+						</div>
+						<div class="card-action">
+							<a href="#">这是一篇文章</a>
+						</div>
+					</div>
+					<div id="test2" class="z-depth-5 center" style="height: 230px">
+						<img src="/resource/img/ssys.jpg" width="80%" />
+					</div>
+					<div id="test3" class="z-depth-5" style="height: 230px">
+						<div class="card-action">
+							<a href="http://oew.ink/">Jiatln'blog</a>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+	</div>
 	</main>
 	<!-- 以下是footer区域 -->
 	<footer class="page-footer" style="background-color: white">
@@ -123,8 +120,7 @@
 			<div class="container center">© 2018 Copyright Jcsmallming</div>
 		</div>
 	</footer>
-	<a id="top" class="btn btn-floating waves-effect waves-light" style="position: fixed; bottom: 30px; right: 30px; display: none;"><i
-		 class="material-icons">publish</i></a>
+	<a id="top" class="btn btn-floating waves-effect waves-light" style="position: fixed; bottom: 30px; right: 30px; display: none;"><i class="material-icons">publish</i></a>
 
 
 	<script type="text/javascript" src="resource/jquery/jquery-3.2.1.min.js"></script>
@@ -134,13 +130,13 @@
 		var imageHeight = 100;
 		var imagewidth = 80;
 		var br = "";
-		$(function () {
-			$("#top").click(function () {
+		$(function() {
+			$("#top").click(function() {
 				$("html,body").animate({
-					scrollTop: 0
+					scrollTop : 0
 				}, 500);
 			});
-			var t1 = window.setInterval(function () {
+			var t1 = window.setInterval(function() {
 				if ($(document).scrollTop() > 0) {
 					$("#top").fadeIn();
 				} else {
@@ -148,9 +144,9 @@
 				}
 			}, 10);
 			$(".button-collapse").sideNav({
-				menuWidth: 180, // Default is 240
-				closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
-				draggable: true
+				menuWidth : 180, // Default is 240
+				closeOnClick : true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
+				draggable : true
 			});
 			if ($(window).width() / $(window).height() > 1.2) {
 				$("#showCard").show();
@@ -161,7 +157,7 @@
 				br = "</br>";
 			}
 			$('.carousel.carousel-slider').carousel({
-				full_width: true
+				full_width : true
 			});
 			var href = location.search;
 			var id = href.split("=");
@@ -169,7 +165,7 @@
 			pn++;
 		});
 
-		$(window).scroll(function () {
+		$(window).scroll(function() {
 			if ($(document).scrollTop() >= $(document).height() - $(window).height()) { //判断是否已经滚动到页面底部；
 				getPage(pn);
 				pn++;
@@ -181,14 +177,14 @@
 				$("#content").empty();
 			}
 			$.ajax({
-				type: "POST",
-				dataType: "json",
-				url: "/list/indexList",
-				data: {
-					"pn": pn
+				type : "POST",
+				dataType : "json",
+				url : "/list/indexList",
+				data : {
+					"pn" : pn
 				},
-				contentType: "application/x-www-form-urlencoded",
-				success: function (result) {
+				contentType : "application/x-www-form-urlencoded",
+				success : function(result) {
 					var onceContainer = $('<div></div>').css("dispaly", "none");
 					for (var i = 0; i < result.list.length; i++) {
 						var tiny = "";
@@ -204,12 +200,12 @@
 						divContent.append('<span>' + result.list[i].date + '</span>');
 						divContent.append('<h5><a style="color:black" href = "list/content?id=' + result.list[i].contentId + '"><strong>' + result.list[i].contentName + '</strong></a>' + br + '<h5>');
 						let
-							summary = result.list[i].summary;
+						summary = result.list[i].summary;
 						/* if (summary.length > 45) {
 							summary = summary.substring(0, 45) + "...";
 						} */
 						divContent.append('<span class="truncate">' + summary + '</span>' + br);
-						divContent.append('<a style="color:red;margin-bottom:0px;position:absolute" href = "list/content?id=' + result.list[i].contentId + '">>>>阅读全文</a>');
+						divContent.append('<a style="color:red;margin-bottom:0px;position:absolute" href = "list/content?id=' + result.list[i].contentId + '">>>>阅读(' + result.list[i].pageviews + ')</a>');
 						// divContent.appendTo("#content");
 						row.append(divImg);
 						row.append(divContent);
@@ -220,7 +216,7 @@
 					Materialize.fadeInImage(onceContainer);
 					// $("#content").trigger('create');
 				},
-				error: function (data) {
+				error : function(data) {
 					alert("error:" + data.responseText);
 				}
 			});

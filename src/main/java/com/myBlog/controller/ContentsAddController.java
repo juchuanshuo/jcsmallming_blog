@@ -39,6 +39,7 @@ public class ContentsAddController {
 		model.setContentId(sequenceMapper.getNowId());
 		model.setCreateTime(new Date());
 		model.setAuthor("ะกร๗");
+		model.setPageviews(0);;
 		model.setContenState(1);
 		if (contentMapper.insert(model) > 0) {
 			s.put("result", "SUCCESS");

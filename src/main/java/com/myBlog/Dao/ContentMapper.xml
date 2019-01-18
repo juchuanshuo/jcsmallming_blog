@@ -418,4 +418,9 @@
 		where
 		content_id = #{id,jdbcType=VARCHAR}
 	</delete>
+	<update id="updateCount" parameterType="String">
+		update content
+		set pageviews = pageviews+1
+		where content_id = #{0}
+	</update>
 </mapper>
