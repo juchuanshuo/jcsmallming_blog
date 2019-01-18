@@ -2,9 +2,9 @@
 <html>
 
 <head>
-<meta charset="UTF-8">
-<link rel="icon" href="/favicon.ico">
-<title>添加文章</title>
+	<meta charset="UTF-8">
+	<link rel="icon" href="/favicon.ico">
+	<title>添加文章</title>
 </head>
 
 <body>
@@ -12,7 +12,8 @@
 		<form role="form" id="form-article-add" enctype="multipart/form-data">
 			<br> <br>
 			<div class="form-group">
-				<label for="contentName">文章标题：</label> <input type="text" class="form-control" value="" placeholder="" id="contentName" name="contentName">
+				<label for="contentName">文章标题：</label> <input type="text" class="form-control" value="" placeholder="" id="contentName"
+				 name="contentName">
 			</div>
 			<div class="form-group">
 				<label>文章类型：</label> <select name="contentType" id="contentType2" class="form-control">
@@ -25,45 +26,39 @@
 			<div class="form-group">
 				<span>缩略图</span>
 				<div class="file-container" style="display: inline-block; position: relative; overflow: hidden; vertical-align: middle">
-					<img id="pre" style="width: 150px; height: 100px" src="/resource/img/up.jpg" class="img-rounded"> <input type="file" name="file" id="inputfile" onchange="setName(this.files[0])" style="position: absolute; top: 0; left: 0; font-size: 34px; opacity: 0"> <br> <span id="filename"></span>
+					<img id="pre" style="width: 150px; height: 100px" src="/resource/img/up.jpg" class="img-rounded"> <input type="file"
+					 name="file" id="inputfile" onchange="setName(this.files[0])" style="position: absolute; top: 0; left: 0; font-size: 34px; opacity: 0">
+					<br> <span id="filename"></span>
 				</div>
-				<button type='button' onclick="uploadImg()" style="align: center; margin-top: 50px" class="btn btn-default">上传</button>
+				<button type='button' onclick="uploadImg()" style="margin-top: 50px" class="btn btn-default">上传</button>
 			</div>
 			<div class="form-group">
 				<label>文章内容：</label>
-				<script id="editor" type="text/plain" style="width: 100%; height: 400px;"></script>
+				<div id="editor" name="content">
+				</div>
+				<textarea id="text1" style="width:100%; height:200px;display: none;" name="content"></textarea>
 			</div>
 			<div class="form-group">
-				<!-- <button onClick="article_save_submit();" class="btn btn-primary radius" type="submit"><i class="Hui-iconfont">&#xe632;</i> 保存并提交审核</button>
-				<button onClick="article_save();" class="btn btn-secondary radius" type="button"><i class="Hui-iconfont">&#xe632;</i> 保存草稿</button>
-				<button onClick="removeIframe();" class="btn btn-default radius" type="button">&nbsp;&nbsp;取消&nbsp;&nbsp;</button> -->
 				<button onClick="article_save_submit();" class="btn btn-primary" type="button">发布</button>
-
 			</div>
 		</form>
 	</div>
-	<!-- <script type="text/javascript"
-		src="/resource/lib/ueditor/1.4.3/ueditor.config.js"></script>
-	<script type="text/javascript" src="/resource/lib/ueditor/1.4.3/ueditor.all.min.js">
-		
-	</script>
-	<script type="text/javascript" src="/resource/lib/ueditor/1.4.3/lang/zh-cn/zh-cn.js"></script> -->
 	<script type="text/javascript">
 		var tiny = null;
-		$(function() {
+		$(function () {
 			$.ajax({
-				type : "POST",
-				dataType : "json",
-				url : "/list/type",
-				data : "",
-				contentType : "application/x-www-form-urlencoded",
-				success : function(result) {
+				type: "POST",
+				dataType: "json",
+				url: "/list/type",
+				data: "",
+				contentType: "application/x-www-form-urlencoded",
+				success: function (result) {
 					for (var i = 0; i < result.length; i++) {
 						$("#contentType2").append('<option value="' + result[i].contentType + '">' + result[i].typeName + '</option>');
 					}
 					//$("contentType");
 				},
-				error : function(data) {
+				error: function (data) {
 					alert("error:" + data.responseText);
 				}
 			});
@@ -72,46 +67,53 @@
 			var data = $('#form-article-add').serialize();
 			data = data + "&tinyImg=" + tiny;
 			$.ajax({
-				type : "GET",
-				dataType : "json",
-				url : "/add",
-				data : data,
-				contentType : "application/x-www-form-urlencoded",
-				success : function(result) {
+				type: "GET",
+				dataType: "json",
+				url: "/add",
+				data: data,
+				contentType: "application/x-www-form-urlencoded",
+				success: function (result) {
 					alert('发表结果：' + result.result, 3000);
 					$("#contentName").val("");
 					$("#contentType2").val("0");
 					$("#summary").val("");
-					var ue = UE.getEditor('editor');
-					ue.setContent("");
 				},
-				error : function(data) {
+				error: function (data) {
 					alert("error:" + data.responseText);
 				}
 			});
 			//document.getElementById("form-article-add").submit();
 		}
 
-		$(function() {
-			var ue = UE.getEditor('editor');
-
+		$(function () {
+			var E = window.wangEditor
+			var editor = new E('#editor')
+			editor.customConfig.uploadImgShowBase64 = true;
+			var $text1 = $('#text1')
+			editor.customConfig.onchange = function (html) {
+				// 监控变化，同步更新到 textarea
+				$text1.val(html)
+			}
+			editor.create()
+			// 初始化 textarea 的值
+			$text1.val(editor.txt.html())
 		});
 
 		function uploadImg() {
 			var form = new FormData(document.getElementById("form-article-add"));
 			var url = "/upload"; //这里的“项目访问路径”要改为你自己的路径  
 			$.ajax({
-				url : url,
-				data : form,
-				type : 'post',
-				async : false,
-				processData : false,
-				contentType : false,
-				success : function(result) {
+				url: url,
+				data: form,
+				type: 'post',
+				async: false,
+				processData: false,
+				contentType: false,
+				success: function (result) {
 					alert("上传成功");
 					tiny = result;
 				},
-				error : function(data) {
+				error: function (data) {
 					alert("error:" + data.responseText);
 				}
 			});
@@ -127,7 +129,7 @@
 			var imgFile;
 
 			//为文件读取成功设置事件  
-			reader.onload = function(e) {
+			reader.onload = function (e) {
 				imgFile = e.target.result;
 				$("#pre").attr('src', imgFile);
 			};

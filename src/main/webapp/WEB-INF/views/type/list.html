@@ -78,12 +78,10 @@
 				deleteById($(this).attr("delete-id"));
 			});
 			$("#editModal").on("hidden.bs.modal", function () {
-				UE.getEditor('editor2').destroy();
 				$(this).removeData("bs.modal");
 			});
 			$("#myModal").on("hidden.bs.modal", function () {
 				$(this).removeData("bs.modal");
-				UE.getEditor('editor').destroy();
 			});
 		});
 		function forTest() {

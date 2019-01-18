@@ -1,28 +1,13 @@
 package com.myBlog.controller;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.URLEncoder;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.ModelAndView;
 
 /**
  * 上传控制器
@@ -36,7 +21,9 @@ public class UploadController {
 	public String test(MultipartFile file, HttpServletRequest request) throws IOException {
 		// 保存数据库的路径
 		// 定义文件保存的本地路径
-		String localPath = request.getServletContext().getRealPath("/")+"resource\\tiniImg\\"; ;
+		String localPath = request.getServletContext().getRealPath("/") + "resource" + File.separator + "tiniImg"
+				+ File.separator + "";
+		;
 		// 定义 文件名
 		String filename = new Date().getTime() + "";
 		// 获得文件类型（可以判断如果不是图片，禁止上传）

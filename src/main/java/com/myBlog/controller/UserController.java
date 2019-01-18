@@ -19,6 +19,7 @@ import com.github.pagehelper.PageInfo;
 import com.myBlog.Dao.SequenceMapper;
 import com.myBlog.Dao.UserMapper;
 import com.myBlog.domain.User;
+import com.myBlog.util.MD5Util;
 
 /**
  * ÓÃ»§¿ØÖÆÆ÷
@@ -74,9 +75,9 @@ public class UserController {
 
 	@ResponseBody
 	@RequestMapping("/add")
-	public Map<String, Object> add(User model) {
-		System.out.println(model);
+	public Map<String, Object> add(User model) throws Exception {
 		model.setUserId(sequenceMapper.getNowId());
+		model.setPassWord(MD5Util.md5(model.getPassWord(), null));
 		int count = userDao.insert(model);
 		Map<String, Object> result = new HashMap<String, Object>();
 		if (count != 0) {

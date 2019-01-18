@@ -97,12 +97,10 @@
 				deleteById($(this).attr("delete-id"));
 			});
 			$("#editModal").on("hidden.bs.modal", function() {
-				UE.getEditor('editor2').destroy();
 				$(this).removeData("bs.modal");
 			});
 			$("#myModal").on("hidden.bs.modal", function() {
 				$(this).removeData("bs.modal");
-				UE.getEditor('editor').destroy();
 			});
 		});
 		function forTest() {
@@ -174,12 +172,9 @@
 					$("#contentName").val(result.contentName);
 					$("#contentType3").val(result.contentType);
 					$("#summary").val(result.summary);
+					$("#text2").val(result.content);
+					$("#pre2").attr("src", result.tinyImg);
 					$("#edit_tn").attr("edit-id", id);
-					var ue = UE.getEditor('editor2');
-					ue.addListener("ready", function() {
-						// editor准备好之后才可以使用
-						ue.setContent(result.content);
-					});
 				},
 				error : function(data) {
 					alert("error:" + data.responseText);

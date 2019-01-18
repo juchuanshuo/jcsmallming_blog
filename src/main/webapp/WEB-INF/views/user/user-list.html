@@ -89,12 +89,10 @@
 				deleteById($(this).attr("delete-id"));
 			});
 			$("#editModal").on("hidden.bs.modal", function() {
-				UE.getEditor('editor2').destroy();
 				$(this).removeData("bs.modal");
 			});
 			$("#myModal").on("hidden.bs.modal", function() {
 				$(this).removeData("bs.modal");
-				UE.getEditor('editor').destroy();
 			}); 
 		});
 		function forTest() {
@@ -209,7 +207,6 @@
 			ul.append(firstPageLi).append(prePageLi);
 			//1,2，3遍历给ul中添加页码提示
 			$.each(result.navigatepageNums, function(index, item) {
-
 				var numLi = $("<li></li>").append($("<a></a>").append(item));
 				if (result.pageNum == item) {
 					numLi.addClass("active");
