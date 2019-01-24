@@ -2,48 +2,46 @@
 <html lang="en">
 
 <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-<meta name="description" content="">
-<meta name="author" content="">
-<title>SmallMing blog</title>
-<style type="text/css">
-body {
-	display: flex;
-	min-height: 100vh;
-	flex-direction: column;
-}
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<!-- 使用设备的宽度作为视图宽度并禁止初始的缩放,user-scalable = no 属性能够解决 iPad 切换横屏之后触摸才能回到具体尺寸的问题。 -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<title>SmallMing blog</title>
+	<style type="text/css">
+		body {
+			display: flex;
+			min-height: 100vh;
+			flex-direction: column;
+		}
 
-main {
-	flex: 1 0 auto;
-}
+		main {
+			flex: 1 0 auto;
+			background-color: #F6F4F1;
+		}
 
-header {
-	flex: 0 0 auto;
-}
-</style>
-<title id="contentTitle"></title>
-<!-- Compiled and minified CSS -->
-<link rel="stylesheet" href="/resource/vue-material/font.css">
-<link rel="stylesheet" href="/resource/vue-material/icon+material.css">
-<link rel="stylesheet" href="/resource/materialize/css/materialize.min.css">
+		header {
+			flex: 0 0 auto;
+		}
+	</style>
+	<title id="contentTitle"></title>
+	<!-- Compiled and minified CSS -->
+	<link rel="stylesheet" href="/resource/materialize/css/font.css">
+	<link rel="stylesheet" href="/resource/materialize/css/icon+material.css">
+	<link rel="stylesheet" href="/resource/materialize/css/materialize.min.css">
+	<link rel="stylesheet" href="/resource/materialize/css/blog.css">
+	<link rel="stylesheet" href="/resource/font-awesome-4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
 	<header>
-		<!-- 这里是导航区域 -->
-		<div id="nav-bar" class="z-depth-5 navbar-fixed">
-			<nav style="background-color: rgb(0, 0, 0)">
-				<!-- 正常导航 -->
-				<div class="nav-wrapper" id="nav-computer" style="display: none">
-					<a href="/" class="brand-logo" style="margin-left: 15%">Jcsmallming</a>
-					<form class="right">
-						<div class="input-field">
-							<input id="search" type="search" required> <label class="label-icon" for="search"><i class="material-icons">search</i></label> <i class="material-icons">close</i>
-						</div>
-					</form>
+		<div class="navbar-fixed">
+			<nav style="background-color:#991c00" role="navigation">
+				<div class="nav-wrapper db">
+					<a href="#" class="brand-logo">Jcsmallming</a>
+					<a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
 					<ul id="nav-mobile" class="right hide-on-med-and-down">
 						<li class="active"><a href="/">首页</a></li>
 						<li><a href="content.html">文章</a></li>
@@ -53,58 +51,52 @@ header {
 						<li><a href="transfer.html">施工中</a></li>
 					</ul>
 				</div>
-				<!-- 小屏幕侧边导航 -->
-				<ul id="slide-out" class="side-nav white-text">
-					<li>
-						<div class="userView">
-							<div class="background">
-								<img src="/resource/img/office.jpg">
-							</div>
-							<a href="#!user"><img class="circle" src="/resource/img/miao.jpg"></a> <a href="#!name"><span class="white-text name">jcsmallming</span></a> <a href="#!email"><span class="white-text email">jcsmallming@163.com</span></a>
-						</div>
-					</li>
-					<li><a href="content.html">文章</a></li>
-					<li><a href="talk.html">施工中</a></li>
-					<li><a href="aboutMe.html">施工中</a></li>
-					<li><a href="messageBoard.html">施工中</a></li>
-					<li><a href="transfer.html">施工中</a></li>
-				</ul>
-				<div id="button-collapse">
-					<a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a> <a href="/" class="brand-logo" style="margin-left: 15%">Jcsmallming</a>
-				</div>
 			</nav>
 		</div>
+		<ul class="sidenav" id="mobile-demo">
+			<li>
+				<div class="user-view">
+					<div class="background">
+						<img src="/resource/img/office.jpg">
+					</div>
+					<a href="#user"><img class="circle" src="/resource/img/miao.jpg"></a>
+					<a href="#name"><span class="white-text name">小明</span></a>
+					<a href="#email"><span class="white-text email">1304363358@qq.com</span></a>
+				</div>
+			</li>
+			<li><a href="content.html">文章</a></li>
+			<li><a href="talk.html">施工中</a></li>
+			<li><a href="aboutMe.html">施工中</a></li>
+			<li><a href="messageBoard.html">施工中</a></li>
+			<li><a href="transfer.html">施工中</a></li>
+		</ul>
 	</header>
 	<main>
-	<div class="container">
-		<div class="row">
-			<div id="contentContainer" style="margin-top: 10px" class="col s12 m8"></div>
-			<div id="showCard" class="col s1 m4" style="display: none">
-				<div class="card">
-					<nav class="nav-extended" style="background-color: black">
-						<div class=" nav-content">
-							<ul class="tabs tabs-transparent">
-								<li class="tab"><a class="active" href="#test1">推荐</a></li>
-								<li class="tab"><a href="#test2">公众号</a></li>
-								<li class="tab"><a href="#test3">友链</a></li>
-							</ul>
+		<div class="container">
+			<div class="row">
+				<div class="col s12 m8">
+					<div id="contentContainer"></div>
+				</div>
+				<div class="col s12 m4">
+					<div class="card white">
+						<div class="center activator" style="background-image:url(/resource/img/office.jpg);height: 200px">
+							<img class="circle imgCenter activator" src="/resource/img/miao.jpg" width="100px">
+							<i class="iblock"></i>
 						</div>
-					</nav>
-					<div id="test1" class="z-depth-5" style="height: 230px">
-						<div class="card-action">
-							<a href="#">这是一篇文章</a>
+						<div class="card-content center">
+							<i class="fa fa-wechat fa-2x activator" aria-hidden="true"></i>&nbsp;&nbsp;
+							<a style="color: black;" href="https://github.com/juchuanshuo"><i class="fa fa-github fa-2x" aria-hidden="true"></i></a>&nbsp;&nbsp;
+							<a style="color: black;" href="Mailto:1304363358@qq.com"><i class="fa fa-envelope-o fa-fw fa-2x"></i></a>
 						</div>
-						<div class="card-action">
-							<a href="#">这是一篇文章</a>
-						</div>
-						<div class="card-action">
-							<a href="#">这是一篇文章</a>
+						<div class="card-reveal">
+							<span class="card-title grey-text text-darken-4">公众号<i class="material-icons right">close</i></span>
+							<div class="center"><img src="/resource/img/ssys.jpg" width="70%" /></div>
 						</div>
 					</div>
-					<div id="test2" class="z-depth-5 center" style="height: 230px">
-						<img src="/resource/img/ssys.jpg" width="80%" />
-					</div>
-					<div id="test3" class="z-depth-5" style="height: 230px">
+					<div class="card">
+						<div class="card-content">
+							<span class="card-title grey-text text-darken-4 center">友链</span>
+						</div>
 						<div class="card-action">
 							<a href="http://oew.ink/">Jiatln'blog</a>
 						</div>
@@ -112,15 +104,15 @@ header {
 				</div>
 			</div>
 		</div>
-	</div>
 	</main>
 	<!-- 以下是footer区域 -->
-	<footer class="page-footer" style="background-color: white">
+	<footer class="page-footer" style="background-color: #F6F4F1">
 		<div class="footer-copyright" style="color: black">
-			<div class="container center">© 2018 Copyright Jcsmallming</div>
+			<div class="container center">© 2018 Copyright Jcsmallming <span class="gh-ico" aria-hidden="true"></span></div>
 		</div>
 	</footer>
-	<a id="top" class="btn btn-floating waves-effect waves-light" style="position: fixed; bottom: 30px; right: 30px; display: none;"><i class="material-icons">publish</i></a>
+	<a id="top" class="btn btn-floating waves-effect waves-light" style="position: fixed; bottom: 30px; right: 30px; display: none;"><i
+		 class="material-icons">publish</i></a>
 
 
 	<script type="text/javascript" src="resource/jquery/jquery-3.2.1.min.js"></script>
@@ -130,24 +122,20 @@ header {
 		var imageHeight = 100;
 		var imagewidth = 80;
 		var br = "";
-		$(function() {
-			$("#top").click(function() {
+		$(function () {
+			$("#top").click(function () {
 				$("html,body").animate({
-					scrollTop : 0
+					scrollTop: 0
 				}, 500);
 			});
-			var t1 = window.setInterval(function() {
+			var t1 = window.setInterval(function () {
 				if ($(document).scrollTop() > 0) {
 					$("#top").fadeIn();
 				} else {
 					$("#top").fadeOut();
 				}
 			}, 10);
-			$(".button-collapse").sideNav({
-				menuWidth : 180, // Default is 240
-				closeOnClick : true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
-				draggable : true
-			});
+			$('.sidenav').sidenav();
 			if ($(window).width() / $(window).height() > 1.2) {
 				$("#showCard").show();
 				$("#nav-computer").show();
@@ -157,15 +145,13 @@ header {
 				br = "</br>";
 			}
 			$('.carousel.carousel-slider').carousel({
-				full_width : true
+				full_width: true
 			});
-			var href = location.search;
-			var id = href.split("=");
 			getPage(pn);
 			pn++;
 		});
 
-		$(window).scroll(function() {
+		$(window).scroll(function () {
 			if ($(document).scrollTop() >= $(document).height() - $(window).height()) { //判断是否已经滚动到页面底部；
 				getPage(pn);
 				pn++;
@@ -177,15 +163,15 @@ header {
 				$("#content").empty();
 			}
 			$.ajax({
-				type : "POST",
-				dataType : "json",
-				url : "/list/indexList",
-				data : {
-					"pn" : pn
+				type: "POST",
+				dataType: "json",
+				url: "/list/indexList",
+				data: {
+					"pn": pn
 				},
-				contentType : "application/x-www-form-urlencoded",
-				success : function(result) {
-					var onceContainer = $('<div></div>').css("dispaly", "none");
+				contentType: "application/x-www-form-urlencoded",
+				success: function (result) {
+					var onceContainer = $('<div></div>');
 					for (var i = 0; i < result.list.length; i++) {
 						var tiny = "";
 						if (result.list[i].tinyImg == null || result.list[i].tinyImg == "") {
@@ -193,30 +179,32 @@ header {
 						} else {
 							tiny = result.list[i].tinyImg;
 						}
-						var row = $('<div></div>').addClass("row hoverable");
-						var divImg = $('<div></div>').addClass("col s3 m3");
-						divImg.append('<img src="' + tiny + '" width=' + imagewidth + 'px height="' + imageHeight + 'px" />');
-						var divContent = $('<div></div>').addClass("col s9 m9");
-						divContent.append('<span>' + result.list[i].date + '</span>');
-						divContent.append('<h5><a style="color:black" href = "list/content?id=' + result.list[i].contentId + '"><strong>' + result.list[i].contentName + '</strong></a>' + br + '<h5>');
-						let
-						summary = result.list[i].summary;
+						var row = $('<div></div>').addClass("card");
+						var title = $('<div style="margin-left:15px"></div>');
+						title.append('<span class="card-title"><a style="color:black" href = "list/content?id=' + result.list[i].contentId + '"><strong>' + result.list[i].contentName + '</strong></a>' + br + '<span>');
+						var divImg = $('<div class="col s3 m3"></div>');
+						divImg.append('<img height="100px" width="150px" src="' + tiny + '" />');
+						let summary = result.list[i].summary;
 						/* if (summary.length > 45) {
 							summary = summary.substring(0, 45) + "...";
 						} */
-						divContent.append('<span class="truncate">' + summary + '</span>' + br);
-						divContent.append('<a style="color:red;margin-bottom:0px;position:absolute" href = "list/content?id=' + result.list[i].contentId + '">>>>阅读(' + result.list[i].pageviews + ')</a>');
+						var body = $('<div class="row"></div>');
+						divImg.appendTo(body);
+						var divContent = $('<div class="col s6 m9 offset-s3" style="height:100px"></div>');
+						divContent.append('<span class="truncate">' + summary + '</span>');
+						divContent.append('<span>作者：' + result.list[i].author + ' 创建于 ' + result.list[i].date + ' 阅读量(' + result.list[i].pageviews + ')</span>');
 						// divContent.appendTo("#content");
-						row.append(divImg);
-						row.append(divContent);
+						divContent.appendTo(body);
+						row.append(title);
+						row.append(body);
 						row.appendTo(onceContainer);
 
 					}
 					onceContainer.appendTo($("#contentContainer"));
-					Materialize.fadeInImage(onceContainer);
+					// Materialize.fadeInImage(onceContainer);
 					// $("#content").trigger('create');
 				},
-				error : function(data) {
+				error: function (data) {
 					alert("error:" + data.responseText);
 				}
 			});

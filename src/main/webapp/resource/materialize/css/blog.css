@@ -1,0 +1,32 @@
+.db {
+    margin: 0 auto;
+    max-width: 1280px;
+    width: 90%
+}
+
+@media only screen and (min-width: 601px) {
+    .db {
+        width: 85%
+    }
+}
+
+@media only screen and (min-width: 993px) {
+    .db {
+        width: 70%
+    }
+}
+
+.db .e {
+    margin-left: -.75rem;
+    margin-right: -.75rem
+}
+
+.imgCenter {
+	vertical-align:middle
+}
+.iblock {
+	display:inline-block;
+	height:100%;
+	width:0;
+	vertical-align:middle
+}

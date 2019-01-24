@@ -408,7 +408,7 @@
 		as typeName, c.content_name,
 		c.pageviews, c.conten_state,
 		c.create_time, c.summary, c.update_time,
-		c.content,c.tiny_img
+		c.content,c.tiny_img,c.author
 		from
 		content c left
 		join contentType t on c.content_type = t.content_type

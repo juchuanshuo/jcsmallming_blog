@@ -2,107 +2,97 @@
 <html lang="en">
 
 <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-<meta name="description" content="">
-<meta name="author" content="">
-<link rel="icon" href="../../favicon.ico">
-<title id="contentTitle"></title>
-<style type="text/css">
-body {
-	display: flex;
-	min-height: 100vh;
-	flex-direction: column;
-}
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<link rel="icon" href="../../favicon.ico">
+	<title id="contentTitle"></title>
+	<style type="text/css">
+		body {
+			display: flex;
+			min-height: 100vh;
+			flex-direction: column;
+		}
 
-main {
-	flex: 1 0 auto;
-}
+		main {
+			flex: 1 0 auto;
+		}
 
-header {
-	flex: 0 0 auto;
-}
-</style>
-<!-- Custom styles for this template -->
-<link href="/resource/bootstrap-3.3.7/css/blog.css" rel="stylesheet">
-<link rel="stylesheet" href="/resource/vue-material/font.css">
-<link rel="stylesheet" href="/resource/vue-material/icon+material.css">
-<link rel="stylesheet" href="/resource/materialize/css/materialize.min.css">
-<link rel="stylesheet" href="/resource/login/css/blogContent.css">
+		header {
+			flex: 0 0 auto;
+		}
+	</style>
+	<link rel="stylesheet" href="/resource/materialize/css/font.css">
+	<link rel="stylesheet" href="/resource/materialize/css/icon+material.css">
+	<link rel="stylesheet" href="/resource/materialize/css/materialize.min.css">
+	<link rel="stylesheet" href="/resource/materialize/css/blog.css">
+	<link rel="stylesheet" href="/resource/font-awesome-4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
-	<!-- 这里是导航区域 -->
 	<header>
-		<div id="nav-bar" class="z-depth-5 navbar-fixed">
-			<nav style="background-color: rgb(0, 0, 0)">
-				<!-- 正常导航 -->
-				<div class="nav-wrapper" id="nav-computer" style="display: none">
-					<a href="/" class="brand-logo" style="margin-left: 15%">Jcsmallming</a>
-					<form class="right">
-						<div class="input-field">
-							<input id="search" type="search" required> <label class="label-icon" for="search"><i class="material-icons">search</i></label> <i class="material-icons">close</i>
-						</div>
-					</form>
+		<div class="navbar-fixed">
+			<nav style="background-color:#991c00" role="navigation">
+				<div class="nav-wrapper db">
+					<a href="#" class="brand-logo">Jcsmallming</a>
+					<a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
 					<ul id="nav-mobile" class="right hide-on-med-and-down">
-						<li class="active"><a href="/">首页</a></li>
-						<li><a href="/content.html">文章</a></li>
+						<li><a href="/">首页</a></li>
+						<li class="active"><a href="/content.html">文章</a></li>
 						<li><a href="/talk.html">施工中</a></li>
 						<li><a href="/aboutMe.html">施工中</a></li>
 						<li><a href="/messageBoard.html">施工中</a></li>
 						<li><a href="/transfer.html">施工中</a></li>
 					</ul>
 				</div>
-				<!-- 小屏幕侧边导航 -->
-				<ul id="slide-out" class="side-nav white-text">
-					<li>
-						<div class="userView">
-							<div class="background">
-								<img src="/resource/img/office.jpg">
-							</div>
-							<a href="#!user"><img class="circle" src="/resource/img/miao.jpg"></a> <a href="#!name"><span class="white-text name">jcsmallming</span></a> <a href="#!email"><span class="white-text email">jcsmallming@163.com</span></a>
-						</div>
-					</li>
-					<li><a href="/content.html">文章</a></li>
-					<li><a href="/talk.html">施工中</a></li>
-					<li><a href="/aboutMe.html">施工中</a></li>
-					<li><a href="/messageBoard.html">施工中</a></li>
-					<li><a href="/transfer.html">施工中</a></li>
-				</ul>
-				<div id="button-collapse">
-					<a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a> <a href="/" class="brand-logo" style="margin-left: 15%">Jcsmallming</a>
-				</div>
 			</nav>
 		</div>
-		</div>
+		<ul class="sidenav" id="mobile-demo">
+			<li>
+				<div class="user-view">
+					<div class="background">
+						<img src="/resource/img/office.jpg">
+					</div>
+					<a href="#user"><img class="circle" src="/resource/img/miao.jpg"></a>
+					<a href="#name"><span class="white-text name">小明</span></a>
+					<a href="#email"><span class="white-text email">1304363358@qq.com</span></a>
+				</div>
+			</li>
+			<li><a href="content.html">文章</a></li>
+			<li><a href="talk.html">施工中</a></li>
+			<li><a href="aboutMe.html">施工中</a></li>
+			<li><a href="messageBoard.html">施工中</a></li>
+			<li><a href="transfer.html">施工中</a></li>
+		</ul>
 	</header>
 	<main>
-	<div class="container">
-		<div class="row">
-			<div class="col s12 m9 blog-main">
-				<div class="blog-post">
-					<h2 class="blog-post-title" id="contentName"></h2>
-					<p class="blog-post-meta">
-						<span id="date"></span> by<a href="#" id="author"></a> &nbsp;&nbsp;<span>阅读量：<span id="views"></span></span>
-					</p>
-					<div id="contentType"></div>
-					<p id="summary"></p>
-					<hr>
-					<div id="content"></div>
-				</div>
-				<!-- /.blog-post -->
-				<ul class="pager">
-					<li>上一篇:<a id="lastContent" href="">内容</a></li>
-					<li>下一篇:<a id="nextContent" href="">内容</a></li>
-				</ul>
+		<div class="container">
+			<div class="row">
+				<div class="col s12 m9 blog-main">
+					<div class="blog-post">
+						<h2 class="blog-post-title" id="contentName"></h2>
+						<p class="blog-post-meta">
+							<span id="date"></span> by<a href="#" id="author"></a> &nbsp;&nbsp;<span>阅读量：<span id="views"></span></span>
+						</p>
+						<div id="contentType"></div>
+						<p id="summary"></p>
+						<hr>
+						<div id="content"></div>
+					</div>
+					<!-- /.blog-post -->
+					<ul class="pager">
+						<li>上一篇:<a id="lastContent" href="">内容</a></li>
+						<li>下一篇:<a id="nextContent" href="">内容</a></li>
+					</ul>
 
+				</div>
+				<!-- /.blog-main -->
 			</div>
-			<!-- /.blog-main -->
+			<!-- /.row -->
 		</div>
-		<!-- /.row -->
-	</div>
 	</main>
 	<!-- /.container -->
 
@@ -112,17 +102,18 @@ header {
 			<div class="container center">© 2018 Copyright Jcsmallming</div>
 		</div>
 	</footer>
-	<a id="top" class="btn btn-floating waves-effect waves-light" style="position: fixed; bottom: 30px; right: 30px; display: none;"><i class="material-icons">publish</i></a>
+	<a id="top" class="btn btn-floating waves-effect waves-light" style="position: fixed; bottom: 30px; right: 30px; display: none;"><i
+		 class="material-icons">publish</i></a>
 	<script type="text/javascript" src="/resource/jquery/jquery-3.2.1.min.js"></script>
 	<script src="/resource/materialize/js/materialize.min.js"></script>
 	<script type="text/javascript">
-		$(function() {
-			$("#top").click(function() {
+		$(function () {
+			$("#top").click(function () {
 				$("html,body").animate({
-					scrollTop : 0
+					scrollTop: 0
 				}, 500);
 			});
-			var t1 = window.setInterval(function() {
+			var t1 = window.setInterval(function () {
 				if ($(document).scrollTop() > 0) {
 					$("#top").fadeIn();
 				} else {
@@ -132,11 +123,7 @@ header {
 			var imageHeight = 100;
 			var imagewidth = 80;
 			var br = "";
-			$(".button-collapse").sideNav({
-				menuWidth : 180, // Default is 240
-				closeOnClick : true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
-				draggable : true
-			});
+			$('.sidenav').sidenav();
 			if ($(window).width() / $(window).height() > 1.2) {
 				$("#showCard").show();
 				$("#nav-computer").show();
@@ -146,31 +133,31 @@ header {
 				br = "</br>";
 			}
 			$('.carousel.carousel-slider').carousel({
-				full_width : true
+				full_width: true
 			});
 			var href = location.search;
 			var id = href.split("=");
 			$.ajax({
-				type : "POST",
-				dataType : "json",
-				url : "/count/content",
-				data : {
-					"contentId" : id[1]
+				type: "POST",
+				dataType: "json",
+				url: "/count/content",
+				data: {
+					"contentId": id[1]
 				},
-				contentType : "application/x-www-form-urlencoded",
-				success : function(result) {
+				contentType: "application/x-www-form-urlencoded",
+				success: function (result) {
 
 				},
-				error : function(data) {
+				error: function (data) {
 
 				}
 			});
 			$.ajax({
-				type : "POST",
-				dataType : "json",
-				url : "/list/content/" + id[1],
-				contentType : "application/x-www-form-urlencoded",
-				success : function(result) {
+				type: "POST",
+				dataType: "json",
+				url: "/list/content/" + id[1],
+				contentType: "application/x-www-form-urlencoded",
+				success: function (result) {
 					$("#content").html(result.content);
 					$("#summary").html(result.summary);
 					$("#date").html(result.date);
@@ -180,7 +167,7 @@ header {
 					$("#contentType").html('<div class="chip">' + result.typeName + '</div>');
 					$("#views").text(result.pageviews);
 				},
-				error : function(data) {
+				error: function (data) {
 					alert("error:" + data.responseText);
 				}
 			});

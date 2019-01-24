@@ -22,35 +22,46 @@
 	</style>
 	<title>施工中</title>
 
-	<link rel="stylesheet" href="/resource/vue-material/font.css">
-	<link rel="stylesheet" href="/resource/vue-material/icon+material.css">
+	<link rel="stylesheet" href="/resource/materialize/css/font.css">
+	<link rel="stylesheet" href="/resource/materialize/css/icon+material.css">
 	<link rel="stylesheet" href="/resource/materialize/css/materialize.min.css">
+	<link rel="stylesheet" href="/resource/materialize/css/blog.css">
 </head>
 
 <body>
-	<!-- 这里是导航区域 -->
-	<div id="nav-bar" class="z-depth-5 navbar-fixed" style="margin-top:15px">
-		<nav style="background-color:rgb(0, 0, 0)">
-			<div class="nav-wrapper">
-				<a href="/" class="brand-logo" style="margin-left:15%">Jcsmallming</a>
-				<form class="right">
-					<div class="input-field">
-						<input id="search" type="search" required>
-						<label class="label-icon" for="search"><i class="material-icons">search</i></label>
-						<i class="material-icons">close</i>
-					</div>
-				</form>
+	<div class="navbar-fixed">
+		<nav class="black">
+			<div class="nav-wrapper db">
+				<a href="#" class="brand-logo">Jcsmallming</a>
+				<a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
 				<ul id="nav-mobile" class="right hide-on-med-and-down">
-					<li><a href="/">首页</a></li>
+					<li class="active"><a href="/">首页</a></li>
 					<li><a href="content.html">文章</a></li>
 					<li><a href="talk.html">施工中</a></li>
 					<li><a href="aboutMe.html">施工中</a></li>
 					<li><a href="messageBoard.html">施工中</a></li>
-					<li class="active"><a href="transfer.html">施工中</a></li>
+					<li><a href="transfer.html">施工中</a></li>
 				</ul>
 			</div>
 		</nav>
 	</div>
+	<ul class="sidenav" id="mobile-demo">
+		<li>
+			<div class="user-view">
+				<div class="background">
+					<img src="/resource/img/office.jpg">
+				</div>
+				<a href="#user"><img class="circle" src="/resource/img/miao.jpg"></a>
+				<a href="#name"><span class="white-text name">小明</span></a>
+				<a href="#email"><span class="white-text email">1304363358@qq.com</span></a>
+			</div>
+		</li>
+		<li><a href="content.html">文章</a></li>
+		<li><a href="talk.html">施工中</a></li>
+		<li><a href="aboutMe.html">施工中</a></li>
+		<li><a href="messageBoard.html">施工中</a></li>
+		<li><a href="transfer.html">施工中</a></li>
+	</ul>
 	<div class="container" style="margin-top:50px">
 		<div style="height:350px"></div>
 	</div>
