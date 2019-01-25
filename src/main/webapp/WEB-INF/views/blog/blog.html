@@ -38,12 +38,12 @@
 		<div class="navbar-fixed">
 			<nav style="background-color:#991c00" role="navigation">
 				<div class="nav-wrapper db">
-					<a href="#" class="brand-logo">Jcsmallming</a>
+					<a href="/" class="brand-logo">Jcsmallming</a>
 					<a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
 					<ul id="nav-mobile" class="right hide-on-med-and-down">
 						<li><a href="/">首页</a></li>
 						<li class="active"><a href="/content.html">文章</a></li>
-						<li><a href="/talk.html">施工中</a></li>
+						<li><a href="/friends.html">友链</a></li>
 						<li><a href="/aboutMe.html">施工中</a></li>
 						<li><a href="/messageBoard.html">施工中</a></li>
 						<li><a href="/transfer.html">施工中</a></li>
@@ -62,11 +62,11 @@
 					<a href="#email"><span class="white-text email">1304363358@qq.com</span></a>
 				</div>
 			</li>
-			<li><a href="content.html">文章</a></li>
-			<li><a href="talk.html">施工中</a></li>
-			<li><a href="aboutMe.html">施工中</a></li>
-			<li><a href="messageBoard.html">施工中</a></li>
-			<li><a href="transfer.html">施工中</a></li>
+			<li class="active"><a href="/content.html">文章</a></li>
+			<li><a href="/friends.html">友链</a></li>
+			<li><a href="/aboutMe.html">施工中</a></li>
+			<li><a href="/messageBoard.html">施工中</a></li>
+			<li><a href="/transfer.html">施工中</a></li>
 		</ul>
 	</header>
 	<main>
@@ -121,21 +121,7 @@
 					$("#top").fadeOut();
 				}
 			}, 10);
-			var imageHeight = 100;
-			var imagewidth = 80;
-			var br = "";
 			$('.sidenav').sidenav();
-			if ($(window).width() / $(window).height() > 1.2) {
-				$("#showCard").show();
-				$("#nav-computer").show();
-				$("#button-collapse").hide();
-				imageHeight = 135;
-				imagewidth = 135;
-				br = "</br>";
-			}
-			$('.carousel.carousel-slider').carousel({
-				full_width: true
-			});
 			var href = location.search;
 			var id = href.split("=");
 			$.ajax({
@@ -165,7 +151,7 @@
 					$("#contentTitle").html(result.contentName);
 					$("#contentName").html(result.contentName);
 					$("#author").text(result.author);
-					$("#contentType").html('<div class="chip">' + result.typeName + '</div>');
+					$("#contentType").html('<i class="fa fa-tag" aria-hidden="true"></i><a href="#">' + result.typeName + '</a>');
 					$("#views").text(result.pageviews);
 				},
 				error: function (data) {

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- 使用设备的宽度作为视图宽度并禁止初始的缩放,user-scalable = no 属性能够解决 iPad 切换横屏之后触摸才能回到具体尺寸的问题。 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>SmallMing blog</title>
+    <style type="text/css">
+        body {
+            display: flex;
+            min-height: 100vh;
+            flex-direction: column;
+        }
+
+        main {
+            flex: 1 0 auto;
+            background-color: #F6F4F1;
+        }
+
+        header {
+            flex: 0 0 auto;
+        }
+    </style>
+    <title id="contentTitle"></title>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="/resource/materialize/css/font.css">
+    <link rel="stylesheet" href="/resource/materialize/css/icon+material.css">
+    <link rel="stylesheet" href="/resource/materialize/css/materialize.min.css">
+    <link rel="stylesheet" href="/resource/materialize/css/blog.css">
+    <link rel="stylesheet" href="/resource/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/resource/css/auto.css">
+</head>
+
+<body>
+    <header>
+        <div class="navbar-fixed">
+            <nav style="background-color:#991c00" role="navigation">
+                <div class="nav-wrapper db">
+                    <a href="/" class="brand-logo">Jcsmallming</a>
+                    <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                    <ul id="nav-mobile" class="right hide-on-med-and-down">
+                        <li><a href="/">首页</a></li>
+                        <li><a href="content.html">文章</a></li>
+                        <li class="active"><a href="friends.html">友链</a></li>
+                        <li><a href="aboutMe.html">施工中</a></li>
+                        <li><a href="messageBoard.html">施工中</a></li>
+                        <li><a href="transfer.html">施工中</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <ul class="sidenav" id="mobile-demo">
+            <li>
+                <div class="user-view">
+                    <div class="background">
+                        <img src="/resource/img/office.jpg">
+                    </div>
+                    <a href="#user"><img class="circle" src="/resource/img/miao.jpg"></a>
+                    <a href="#name"><span class="white-text name">小明</span></a>
+                    <a href="#email"><span class="white-text email">1304363358@qq.com</span></a>
+                </div>
+            </li>
+            <li><a href="content.html">文章</a></li>
+            <li class="active"><a href="friends.html">友链</a></li>
+            <li><a href="aboutMe.html">施工中</a></li>
+            <li><a href="messageBoard.html">施工中</a></li>
+            <li><a href="transfer.html">施工中</a></li>
+        </ul>
+    </header>
+    <main>
+        <div class="container" id="container">
+            <div class="row">
+                <div class="col s12 m12">
+                    <div class="card">
+                        <div class="card-content">
+                            <span class="card-title grey-text text-darken-4 center">友链</span>
+                        </div>
+                        <div class="card-action center">
+                            <a href="http://oew.ink/">Jiatln'blog</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- 以下是footer区域 -->
+    <footer class="page-footer" style="background-color: #F6F4F1">
+        <div class="footer-copyright" style="color: black">
+            <div class="container center">© 2018 Copyright Jcsmallming <span class="gh-ico" aria-hidden="true"></span></div>
+        </div>
+    </footer>
+    <a id="top" class="btn btn-floating waves-effect waves-light" style="position: fixed; bottom: 30px; right: 30px; display: none;"><i
+            class="material-icons">publish</i></a>
+
+
+    <script type="text/javascript" src="resource/jquery/jquery-3.2.1.min.js"></script>
+    <script src="/resource/materialize/js/materialize.min.js"></script>
+    <script type="text/javascript">
+        var pn = 1;
+        var imageHeight = 100;
+        var imagewidth = 80;
+        var br = "";
+        $(function () {
+            $("#top").click(function () {
+                $("html,body").animate({
+                    scrollTop: 0
+                }, 500);
+            });
+            var t1 = window.setInterval(function () {
+                if ($(document).scrollTop() > 0) {
+                    $("#top").fadeIn();
+                } else {
+                    $("#top").fadeOut();
+                }
+            }, 10);
+            $('.sidenav').sidenav();
+        });
+    </script>
+</body>
+
+</html>

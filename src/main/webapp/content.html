@@ -33,6 +33,7 @@
 	<link rel="stylesheet" href="/resource/materialize/css/materialize.min.css">
 	<link rel="stylesheet" href="/resource/materialize/css/blog.css">
 	<link rel="stylesheet" href="/resource/font-awesome-4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/resource/css/auto.css">
 </head>
 
 <body>
@@ -40,12 +41,12 @@
 		<div class="navbar-fixed">
 			<nav style="background-color:#991c00" role="navigation">
 				<div class="nav-wrapper db">
-					<a href="#" class="brand-logo">Jcsmallming</a>
+					<a href="/" class="brand-logo">Jcsmallming</a>
 					<a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
 					<ul id="nav-mobile" class="right hide-on-med-and-down">
 						<li><a href="/">首页</a></li>
 						<li class="active"><a href="content.html">文章</a></li>
-						<li><a href="talk.html">施工中</a></li>
+						<li><a href="friends.html">友链</a></li>
 						<li><a href="aboutMe.html">施工中</a></li>
 						<li><a href="messageBoard.html">施工中</a></li>
 						<li><a href="transfer.html">施工中</a></li>
@@ -64,20 +65,20 @@
 					<a href="#email"><span class="white-text email">1304363358@qq.com</span></a>
 				</div>
 			</li>
-			<li><a href="content.html">文章</a></li>
-			<li><a href="talk.html">施工中</a></li>
+			<li class="active"><a href="content.html">文章</a></li>
+			<li><a href="friends.html">友链</a></li>
 			<li><a href="aboutMe.html">施工中</a></li>
 			<li><a href="messageBoard.html">施工中</a></li>
 			<li><a href="transfer.html">施工中</a></li>
 		</ul>
 	</header>
 	<main>
-		<div class="container">
+		<div class="container" id="container">
 			<div class="row">
 				<div class="col s12 m8">
 					<div id="contentContainer"></div>
 				</div>
-				<div class="col s12 m4">
+				<div class="col s12 m4" id="personInfo">
 					<div class="card white">
 						<div class="center activator" style="background-image:url(/resource/img/office.jpg);height: 200px">
 							<img class="circle imgCenter activator" src="/resource/img/miao.jpg" width="100px">
@@ -136,17 +137,6 @@
 				}
 			}, 10);
 			$('.sidenav').sidenav();
-			if ($(window).width() / $(window).height() > 1.2) {
-				$("#showCard").show();
-				$("#nav-computer").show();
-				$("#button-collapse").hide();
-				imageHeight = 135;
-				imagewidth = 135;
-				br = "</br>";
-			}
-			$('.carousel.carousel-slider').carousel({
-				full_width: true
-			});
 			getPage(pn);
 			pn++;
 		});
@@ -179,9 +169,9 @@
 						} else {
 							tiny = result.list[i].tinyImg;
 						}
-						var row = $('<div></div>').addClass("card");
+						var row = $('<div id="contentCard"></div>').addClass("card");
 						var title = $('<div style="margin-left:15px"></div>');
-						title.append('<span class="card-title"><a style="color:black" href = "list/content?id=' + result.list[i].contentId + '"><strong>' + result.list[i].contentName + '</strong></a>' + br + '<span>');
+						title.append('<h4 class="contentTitle"><a class="contentTitle" href = "list/content?id=' + result.list[i].contentId + '"><strong>' + result.list[i].contentName + '</div></strong></a>');
 						var divImg = $('<div class="col s3 m3"></div>');
 						divImg.append('<img height="100px" width="150px" src="' + tiny + '" />');
 						let summary = result.list[i].summary;
@@ -191,8 +181,8 @@
 						var body = $('<div class="row"></div>');
 						divImg.appendTo(body);
 						var divContent = $('<div class="col s6 m9 offset-s3" style="height:100px"></div>');
-						divContent.append('<span class="truncate">' + summary + '</span>');
-						divContent.append('<span>作者：' + result.list[i].author + ' 创建于 ' + result.list[i].date + ' 阅读量(' + result.list[i].pageviews + ')</span>');
+						divContent.append('<span class="truncate" id="summary">' + summary + '</span>');
+						divContent.append('<span>'+result.list[i].date + '&nbsp;&nbsp;阅读量(' + result.list[i].pageviews + ')&nbsp;&nbsp;<i class="fa fa-tag" aria-hidden="true"></i><a href="#">' + result.list[i].typeName + '</a></span>');
 						// divContent.appendTo("#content");
 						divContent.appendTo(body);
 						row.append(title);

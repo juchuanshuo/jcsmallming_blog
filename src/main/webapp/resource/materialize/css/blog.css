@@ -22,11 +22,26 @@
 }
 
 .imgCenter {
-	vertical-align:middle
+    vertical-align: middle
 }
+
 .iblock {
-	display:inline-block;
-	height:100%;
-	width:0;
-	vertical-align:middle
+    display: inline-block;
+    height: 100%;
+    width: 0;
+    vertical-align: middle
+}
+
+.contentTitle a {
+    display: inline-block;
+    width: 100%;
+    color: #00a6ff;
+}
+
+.contentTitle a:hover {
+    color: #c300ff;
+}
+
+.contentTitle h4 {
+    vertical-align: middle;
 }
