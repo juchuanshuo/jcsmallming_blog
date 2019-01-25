@@ -31,6 +31,7 @@
 	<link rel="stylesheet" href="/resource/materialize/css/blog.css">
 	<link rel="stylesheet" href="/resource/font-awesome-4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="/resource/login/css/blogContent.css">
+	<link href="/resource/highlight/default.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -107,6 +108,7 @@
 		 class="material-icons">publish</i></a>
 	<script type="text/javascript" src="/resource/jquery/jquery-3.2.1.min.js"></script>
 	<script src="/resource/materialize/js/materialize.min.js"></script>
+	<script src="/resource/highlight/hightlight.min.js"></script>
 	<script type="text/javascript">
 		$(function () {
 			$("#top").click(function () {
@@ -139,6 +141,7 @@
 
 				}
 			});
+			hljs.initHighlightingOnLoad();
 			$.ajax({
 				type: "POST",
 				dataType: "json",
@@ -153,6 +156,9 @@
 					$("#author").text(result.author);
 					$("#contentType").html('<i class="fa fa-tag" aria-hidden="true"></i><a href="#">' + result.typeName + '</a>');
 					$("#views").text(result.pageviews);
+					$('pre > code').each(function () {
+						hljs.highlightBlock(this);
+					});
 				},
 				error: function (data) {
 					alert("error:" + data.responseText);
