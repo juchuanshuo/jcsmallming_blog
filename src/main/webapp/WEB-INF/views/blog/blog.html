@@ -75,7 +75,7 @@
 			<div class="row">
 				<div class="col s12 m9 blog-main">
 					<div class="blog-post">
-						<h2 class="blog-post-title" id="contentName"></h2>
+						<h3 class="blog-post-title" id="contentName"></h3>
 						<p class="blog-post-meta">
 							<span id="date"></span> by<a href="#" id="author"></a> &nbsp;&nbsp;<span>阅读量：<span id="views"></span></span>
 						</p>
@@ -145,7 +145,7 @@
 			$.ajax({
 				type: "POST",
 				dataType: "json",
-				url: "/list/content/" + id[1],
+				url: "/content/getContent/" + id[1],
 				contentType: "application/x-www-form-urlencoded",
 				success: function (result) {
 					$("#content").html(result.content);

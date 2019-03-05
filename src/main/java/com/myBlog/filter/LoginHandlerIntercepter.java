@@ -35,7 +35,7 @@ public class LoginHandlerIntercepter implements HandlerInterceptor {
 			return true;
 		} else {
 			// 没有登陆，转向登陆界面
-			request.getRequestDispatcher("/admin").forward(request, arg1);
+			request.getRequestDispatcher("/admin_for_jcs").forward(request, arg1);
 			return false;
 		}
 	}

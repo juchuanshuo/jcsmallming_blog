@@ -12,37 +12,24 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.myBlog.Dao.ContentMapper;
+import com.myBlog.service.CountService;
 
 /**
- * 用户控制器
+ * @author jcs
+ *
+ *         文章阅读数记录
  */
 @Controller
 @RequestMapping(value = "/count")
 public class CountController {
 	@Resource
-	private ContentMapper contentDao;
+	private CountService countService;
 
 	@ResponseBody
 	@RequestMapping("/content")
 	public String countContent(@RequestParam(value = "contentId", defaultValue = "1") String contentId,
 			HttpSession session) throws Exception {
-		if ("".equals(contentId) || contentId == null) {
-			return null;
-		}
-		if (session.getAttribute("content") != null) {
-			List<String> content = (List<String>) session.getAttribute("content");
-			if (content.contains(contentId)) {
-				return null;
-			} else {
-				contentDao.updateCount(contentId);
-				content.add(contentId);
-			}
-		} else {
-			contentDao.updateCount(contentId);
-			List<String> content = new ArrayList<>();
-			content.add(contentId);
-			session.setAttribute("content", content);
-		}
+		countService.countContent(contentId, session);
 		return null;
 	}
 

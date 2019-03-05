@@ -155,7 +155,7 @@
 			$.ajax({
 				type: "POST",
 				dataType: "json",
-				url: "/list/indexList",
+				url: "/content/list",
 				data: {
 					"pn": pn
 				},
@@ -171,7 +171,7 @@
 						}
 						var row = $('<div id="contentCard"></div>').addClass("card");
 						var title = $('<div style="margin-left:15px"></div>');
-						title.append('<h4 class="contentTitle"><a class="contentTitle" href = "list/content?id=' + result.list[i].contentId + '"><strong>' + result.list[i].contentName + '</div></strong></a>');
+						title.append('<h4 class="contentTitle"><a class="contentTitle" href = "/content/getContent?id=' + result.list[i].contentId + '"><strong>' + result.list[i].contentName + '</div></strong></a>');
 						var divImg = $('<div class="col s3 m3"></div>');
 						divImg.append('<img height="100px" width="150px" src="' + tiny + '" />');
 						let summary = result.list[i].summary;

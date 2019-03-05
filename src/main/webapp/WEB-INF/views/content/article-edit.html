@@ -44,14 +44,14 @@
 		</form>
 	</div>
 	<script type="text/javascript">
-		var editTiny = null;
+		var editTiny = $('#pre2').attr("src");
 		function article_edit_submit() {
 			var data = $('#form-article-edit').serialize();
 			data = data + "&tinyImg=" + editTiny;
 			$.ajax({
 				type: "POST",
 				dataType: "json",
-				url: "/list/edit/" + $("#edit_tn").attr("edit-id"),
+				url: "/content/edit/" + $("#edit_tn").attr("edit-id"),
 				data: data,
 				contentType: "application/x-www-form-urlencoded",
 				success: function (result) {

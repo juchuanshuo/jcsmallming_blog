@@ -1,19 +1,21 @@
 ﻿<!DOCTYPE HTML>
 <html>
+
 <head>
-<meta charset="utf-8">
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-<meta name="description" content="">
-<meta name="author" content="">
-<link rel="icon" href="/favicon.ico">
-<!-- Bootstrap core CSS -->
-<!-- <link href="/resource/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet"> -->
-<title>内容列表</title>
+	<meta charset="utf-8">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Cache-Control" content="no-siteapp" />
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<link rel="icon" href="/favicon.ico">
+	<!-- Bootstrap core CSS -->
+	<!-- <link href="/resource/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet"> -->
+	<title>内容列表</title>
 
 </head>
+
 <body>
 	<div class="container">
 		<div class="row">
@@ -25,7 +27,7 @@
 			<div class="col-md-8 col-md-offset-2">
 				<form role="form" class="form-inline">
 					</span> <input type="text" class="form-control" id="userName2" placeholder="用户名">
-					<button type="button" class="btn btn-primary" onclick = "getList(1)">
+					<button type="button" class="btn btn-primary" onclick="getList(1)">
 						<span class="glyphicon glyphicon-search"></span>查询
 					</button>
 				</form>
@@ -77,27 +79,27 @@
 	Include all compiled plugins (below), or include individual files as needed
 	<script src="/resource/bootstrap-3.3.7/js/bootstrap.min.js"></script> -->
 	<script type="text/javascript">
-		$(function() {
+		$(function () {
 			getList(1);
-			$(document).on("click", ".edit_btn", function() {
+			$(document).on("click", ".edit_btn", function () {
 				$("#editModal").modal({
-					remote : "/user/user-edit"
+					remote: "/user/user-edit"
 				});
 				getuser($(this).attr("edit-id"));
 			});
-			$(document).on("click", ".delete_btn", function() {
+			$(document).on("click", ".delete_btn", function () {
 				deleteById($(this).attr("delete-id"));
 			});
-			$("#editModal").on("hidden.bs.modal", function() {
+			$("#editModal").on("hidden.bs.modal", function () {
 				$(this).removeData("bs.modal");
 			});
-			$("#myModal").on("hidden.bs.modal", function() {
+			$("#myModal").on("hidden.bs.modal", function () {
 				$(this).removeData("bs.modal");
-			}); 
+			});
 		});
 		function forTest() {
 			$("#myModal").modal({
-				remote : "welcome"
+				remote: "welcome"
 			});
 		}
 
@@ -107,15 +109,15 @@
 			} */
 			userName = $("#userName2").val();
 			$.ajax({
-				type : "POST",
-				dataType : "json",
-				url : "/user/search",
-				data : {
-					"pn" : pn,
-					"userName" : userName
+				type: "POST",
+				dataType: "json",
+				url: "/user/search",
+				data: {
+					"pn": pn,
+					"userName": userName
 				},
-				contentType : "application/x-www-form-urlencoded",
-				success : function(result) {
+				contentType: "application/x-www-form-urlencoded",
+				success: function (result) {
 					$("#userList").empty();
 					$("#pageInfo").empty();
 					$("#pageInfo").html("当前为 " + result.pageNum + " 页，共 " + result.total + " 条数据，共 " + result.pages + " 页");
@@ -123,51 +125,51 @@
 						var td1 = $("<td></td>").append(result.list[i].userId);
 						var td2 = $("<td></td>").append('<a href = "/list/user?id=' + result.list[i].userId + '">' + result.list[i].userName + '</a>');
 						var td3 = $("<td></td>").append(result.createtime);
-						var td4 = $("<td></td>").append('<button class="btn btn-default btn-sm edit_btn" edit-id='+result.list[i].userId+'><span class="glyphicon glyphicon-pencil"></span>编辑</button><button class="btn btn-default btn-sm delete_btn" delete-id='+result.list[i].userId+'><span class="glyphicon glyphicon-trash"></span>删除</button>');
+						var td4 = $("<td></td>").append('<button class="btn btn-default btn-sm edit_btn" edit-id=' + result.list[i].userId + '><span class="glyphicon glyphicon-pencil"></span>编辑</button><button class="btn btn-default btn-sm delete_btn" delete-id=' + result.list[i].userId + '><span class="glyphicon glyphicon-trash"></span>删除</button>');
 						$("<tr></tr>").append(td1).append(td2).append(td3).append(td4).appendTo("#userList");
 					}
 					$("#userList").trigger('create');
 					build_page_nav(result);
 					//$("userType");
 				},
-				error : function(data) {
+				error: function (data) {
 					alert("error:" + data.responseText);
 				}
 			});
 		}
-		
+
 		function getuser(id) {
 			$.ajax({
-				type : "POST",
-				dataType : "json",
-				url : "/user/getUser/" + id,
-				contentType : "application/x-www-form-urlencoded",
-				success : function(result) {
+				type: "POST",
+				dataType: "json",
+				url: "/user/getUser/" + id,
+				contentType: "application/x-www-form-urlencoded",
+				success: function (result) {
 					$("#userName").val(result.userName);
 					$("#edit_tn").attr("edit-id", id);
 				},
-				error : function(data) {
+				error: function (data) {
 					alert("error:" + data.responseText);
 				}
 			});
 		}
-		
-		function deleteById(id){
+
+		function deleteById(id) {
 			$.ajax({
-				type : "POST",
-				dataType : "json",
-				url : "/user/delete/" + id,
-				contentType : "application/x-www-form-urlencoded",
-				success : function(result) {
+				type: "POST",
+				dataType: "json",
+				url: "/user/delete/" + id,
+				contentType: "application/x-www-form-urlencoded",
+				success: function (result) {
 					alert(result.result);
 					location.reload();
 				},
-				error : function(data) {
+				error: function (data) {
 					alert("error:" + data.responseText);
 				}
 			});
 		}
-		
+
 		function build_page_nav(result) {
 			//page_nav_area
 			$("#page_nav_area").empty();
@@ -181,10 +183,10 @@
 				prePageLi.addClass("disabled");
 			} else {
 				//为元素添加点击翻页的事件
-				firstPageLi.click(function() {
+				firstPageLi.click(function () {
 					getList(1);
 				});
-				prePageLi.click(function() {
+				prePageLi.click(function () {
 					getList(result.pageNum - 1);
 				});
 			}
@@ -195,10 +197,10 @@
 				nextPageLi.addClass("disabled");
 				lastPageLi.addClass("disabled");
 			} else {
-				nextPageLi.click(function() {
+				nextPageLi.click(function () {
 					getList(result.pageNum + 1);
 				});
-				lastPageLi.click(function() {
+				lastPageLi.click(function () {
 					getList(result.pages);
 				});
 			}
@@ -206,12 +208,12 @@
 			//添加首页和前一页 的提示
 			ul.append(firstPageLi).append(prePageLi);
 			//1,2，3遍历给ul中添加页码提示
-			$.each(result.navigatepageNums, function(index, item) {
+			$.each(result.navigatepageNums, function (index, item) {
 				var numLi = $("<li></li>").append($("<a></a>").append(item));
 				if (result.pageNum == item) {
 					numLi.addClass("active");
 				}
-				numLi.click(function() {
+				numLi.click(function () {
 					getList(item);
 				});
 				ul.append(numLi);
@@ -225,4 +227,5 @@
 		}
 	</script>
 </body>
+
 </html>

@@ -113,7 +113,7 @@
 			$.ajax({
 				type : "POST",
 				dataType : "json",
-				url : "/list",
+				url : "/content/list",
 				data : {
 					"pn" : pn
 				},
@@ -124,7 +124,7 @@
 					$("#pageInfo").html("当前为 " + result.pageNum + " 页，共 " + result.total + " 条数据，共 " + result.pages + " 页");
 					for (var i = 0; i < result.list.length; i++) {
 						var td1 = $("<td></td>").append(result.list[i].contentId);
-						var td2 = $("<td></td>").append('<a href = "/list/content?id=' + result.list[i].contentId + '">' + result.list[i].contentName + '</a>');
+						var td2 = $("<td></td>").append('<a href = "/content/getContent?id=' + result.list[i].contentId + '">' + result.list[i].contentName + '</a>');
 						var td3 = $("<td></td>").append(result.list[i].typeName);
 						var td4 = $("<td></td>").append(result.list[i].updateTime);
 						var td5 = $("<td></td>").append(result.list[i].pageviews);
@@ -146,13 +146,13 @@
 			$.ajax({
 				type : "POST",
 				dataType : "json",
-				url : "/list/type",
+				url : "/content/typeList",
 				async : false,
 				data : "",
 				contentType : "application/x-www-form-urlencoded",
 				success : function(result) {
-					for (var i = 0; i < result.length; i++) {
-						$(ele).append('<option value="'+result[i].contentType+'">' + result[i].typeName + '</option>');
+					for (var i = 0; i < result.list.length; i++) {
+						$(ele).append('<option value="'+result.list[i].contentType+'">' + result.list[i].typeName + '</option>');
 					}
 					//$("contentType");
 				},
@@ -165,7 +165,7 @@
 			$.ajax({
 				type : "POST",
 				dataType : "json",
-				url : "/list/getContent/" + id,
+				url : "/content/getContent/" + id,
 				contentType : "application/x-www-form-urlencoded",
 				success : function(result) {
 					getType("#contentType3");
@@ -243,7 +243,7 @@
 			$.ajax({
 				type : "POST",
 				dataType : "json",
-				url : "/list/delete/" + id,
+				url : "/content/delete/" + id,
 				contentType : "application/x-www-form-urlencoded",
 				success : function(result) {
 					alert(result.result);

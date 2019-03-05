@@ -24,10 +24,14 @@
 			<bean class="com.myBlog.filter.HanderInterceptor1"></bean> </mvc:interceptor> -->
 		<!-- 配置登陆拦截器 -->
 		<mvc:interceptor>
-			<mvc:mapping path="/admin/**" />
-			<mvc:mapping path="add" />
-			<mvc:exclude-mapping path="/admin" />
-			<mvc:exclude-mapping path="/admin/login" />
+			<mvc:mapping path="/admin_for_jcs/**" />
+			<mvc:mapping path="/user/**" />
+			<mvc:mapping path="/content/**" />
+			<mvc:exclude-mapping path="/admin_for_jcs" />
+			<mvc:exclude-mapping path="/user/login" />
+			<mvc:exclude-mapping path="/content/getContent" />
+			<mvc:exclude-mapping path="/content/getContent/**" />
+			<mvc:exclude-mapping path="/content/list" />
 			<bean class="com.myBlog.filter.LoginHandlerIntercepter"></bean>
 		</mvc:interceptor>
 		<!-- ..... -->

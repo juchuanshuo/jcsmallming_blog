@@ -94,7 +94,7 @@
 			$.ajax({
 				type: "POST",
 				dataType: "json",
-				url: "/list/typelist",
+				url: "/content/typeList",
 				data: {
 					"pn": pn
 				},
@@ -121,13 +121,13 @@
 			$.ajax({
 				type: "POST",
 				dataType: "json",
-				url: "/list/type",
+				url: "/content/typeList",
 				async: false,
 				data: "",
 				contentType: "application/x-www-form-urlencoded",
 				success: function (result) {
-					for (var i = 0; i < result.length; i++) {
-						$(ele).append('<option value="' + result[i].contentType + '">' + result[i].typeName + '</option>');
+					for (var i = 0; i < result.list.length; i++) {
+						$(ele).append('<option value="' + result.list[i].contentType + '">' + result.list[i].typeName + '</option>');
 					}
 					//$("contentType");
 				},
@@ -198,7 +198,7 @@
 			$.ajax({
 				type: "POST",
 				dataType: "json",
-				url: "/list/delete/" + id,
+				url: "/content/delete/" + id,
 				contentType: "application/x-www-form-urlencoded",
 				success: function (result) {
 					alert(result.result);
