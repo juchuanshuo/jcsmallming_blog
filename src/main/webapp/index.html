@@ -34,6 +34,15 @@
 	<link rel="stylesheet" href="/resource/materialize/css/blog.css">
 	<link rel="stylesheet" href="/resource/font-awesome-4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="/resource/css/auto.css">
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-135626020-1"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+
+		gtag('config', 'UA-135626020-1');
+	</script>
 </head>
 
 <body>
@@ -47,9 +56,9 @@
 						<li class="active"><a href="/">首页</a></li>
 						<li><a href="content.html">文章</a></li>
 						<li><a href="friends.html">友链</a></li>
-						<li><a href="aboutMe.html">施工中</a></li>
-						<li><a href="messageBoard.html">施工中</a></li>
-						<li><a href="transfer.html">施工中</a></li>
+						<li><a href="aboutMe.html">关于我</a></li>
+						<li><a href="#">施工中</a></li>
+						<li><a href="#">施工中</a></li>
 					</ul>
 				</div>
 			</nav>
@@ -65,11 +74,12 @@
 					<a href="#email"><span class="white-text email">1304363358@qq.com</span></a>
 				</div>
 			</li>
+			<li class="active"><a href="/">首页</a></li>
 			<li><a href="content.html">文章</a></li>
 			<li><a href="friends.html">友链</a></li>
-			<li><a href="aboutMe.html">施工中</a></li>
-			<li><a href="messageBoard.html">施工中</a></li>
-			<li><a href="transfer.html">施工中</a></li>
+			<li><a href="aboutMe.html">关于我</a></li>
+			<li><a href="#">施工中</a></li>
+			<li><a href="#">施工中</a></li>
 		</ul>
 	</header>
 	<main>
@@ -98,8 +108,11 @@
 						<div class="card-content">
 							<span class="card-title grey-text text-darken-4 center">友链</span>
 						</div>
-						<div class="card-action">
+						<div class="card-action center">
 							<a href="http://oew.ink/">Jiatln'blog</a>
+						</div>
+						<div class="card-action center">
+							<a href="http://rex-huang61.cn/">小R</a>
 						</div>
 					</div>
 				</div>
@@ -119,10 +132,6 @@
 	<script type="text/javascript" src="resource/jquery/jquery-3.2.1.min.js"></script>
 	<script src="/resource/materialize/js/materialize.min.js"></script>
 	<script type="text/javascript">
-		var pn = 1;
-		var imageHeight = 100;
-		var imagewidth = 80;
-		var br = "";
 		$(function () {
 			$("#top").click(function () {
 				$("html,body").animate({
@@ -137,21 +146,11 @@
 				}
 			}, 10);
 			$('.sidenav').sidenav();
-			getPage(pn);
-			pn++;
-		});
-
-		$(window).scroll(function () {
-			if ($(document).scrollTop() >= $(document).height() - $(window).height()) { //判断是否已经滚动到页面底部；
-				getPage(pn);
-				pn++;
-			}
+			getPage(1);
 		});
 
 		function getPage(pn) {
-			if (pn == 1) {
-				$("#content").empty();
-			}
+			$("#contentContainer").empty();
 			$.ajax({
 				type: "POST",
 				dataType: "json",
@@ -161,7 +160,6 @@
 				},
 				contentType: "application/x-www-form-urlencoded",
 				success: function (result) {
-					var onceContainer = $('<div></div>');
 					for (var i = 0; i < result.list.length; i++) {
 						var tiny = "";
 						if (result.list[i].tinyImg == null || result.list[i].tinyImg == "") {
@@ -175,24 +173,36 @@
 						var divImg = $('<div class="col s3 m3"></div>');
 						divImg.append('<img height="100px" width="150px" src="' + tiny + '" />');
 						let summary = result.list[i].summary;
-						/* if (summary.length > 45) {
-							summary = summary.substring(0, 45) + "...";
-						} */
 						var body = $('<div class="row"></div>');
 						divImg.appendTo(body);
 						var divContent = $('<div class="col s6 m9 offset-s3" style="height:100px"></div>');
 						divContent.append('<span class="truncate" id="summary">' + summary + '</span>');
-						divContent.append('<span>'+result.list[i].date + '&nbsp;&nbsp;阅读量(' + result.list[i].pageviews + ')&nbsp;&nbsp;<i class="fa fa-tag" aria-hidden="true"></i><a href="#">' + result.list[i].typeName + '</a></span>');
-						// divContent.appendTo("#content");
+						divContent.append('<span>' + result.list[i].date + '&nbsp;&nbsp;阅读量(' + result.list[i].pageviews + ')&nbsp;&nbsp;<i class="fa fa-tag" aria-hidden="true"></i><a href="#">' + result.list[i].typeName + '</a></span>');
 						divContent.appendTo(body);
 						row.append(title);
 						row.append(body);
-						row.appendTo(onceContainer);
-
+						row.appendTo($("#contentContainer"));
 					}
-					onceContainer.appendTo($("#contentContainer"));
-					// Materialize.fadeInImage(onceContainer);
-					// $("#content").trigger('create');
+					//分页条
+					var pagination = $('<ul>').addClass("pagination center");
+					if (result.pageNum == 1) {
+						pagination.append('<li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>');
+					} else {
+						pagination.append('<li class="waves-effect"><a href="#!" onclick="getPage(' + (result.pageNum - 1) + ')"><i class="material-icons">chevron_left</i></a></li>');
+					}
+					for (var j = 1; j <= result.pages; j++) {
+						if (j == result.pageNum) {
+							pagination.append('<li class="active"><a href="#!">' + j + '</a></li>')
+						} else {
+							pagination.append('<li class="waves-effect"><a href="#" onclick="getPage(' + j + ')">' + j + '</a></li>');
+						}
+					}
+					if (result.pageNum == result.pages) {
+						pagination.append('<li class="disabled"><a href="#!"><i class="material-icons">chevron_right</i></a></li>');
+					} else {
+						pagination.append('<li class="waves-effect"><a href="#!" onclick="getPage(' + (result.pageNum + 1) + ')"><i class="material-icons">chevron_right</i></a></li>');
+					}
+					pagination.appendTo(contentContainer);
 				},
 				error: function (data) {
 					alert("error:" + data.responseText);

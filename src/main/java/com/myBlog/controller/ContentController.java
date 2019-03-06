@@ -145,4 +145,10 @@ public class ContentController {
 		return result;
 	}
 
+	@RequestMapping(value = "/getContent/getNear", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<String, Object> getNear(@RequestParam(value = "id", defaultValue = "10000") Integer id) {
+		Map<String, Object> result = contentService.getNear(id);
+		return result;
+	}
 }

@@ -72,4 +72,6 @@ public interface ContentService {
 	 * @return
 	 */
 	public Map<String, Object> edit(Content content);
+
+	public Map<String, Object> getNear(Integer id);
 }

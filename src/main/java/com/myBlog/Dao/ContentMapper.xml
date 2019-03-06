@@ -411,7 +411,8 @@
 		c.content,c.tiny_img,c.author
 		from
 		content c left
-		join contentType t on c.content_type = t.content_type
+		join contentType t on c.content_type =
+		t.content_type
 	</select>
 	<delete id="deleteById" parameterType="com.myBlog.domain.Content">
 		delete from content
@@ -420,7 +421,20 @@
 	</delete>
 	<update id="updateCount" parameterType="String">
 		update content
-		set pageviews = pageviews+1
+		set
+		pageviews = pageviews+1
 		where content_id = #{0}
 	</update>
+	<select id="selectLast" resultMap="BaseResultMap">
+		select content_id,content_name
+		from
+		content where content_id &lt; #{0} order by content_id desc limit
+		1
+	</select>
+	<select id="selectNext" resultMap="BaseResultMap">
+		select content_id,content_name
+		from
+		content where content_id &gt; #{0} order by content_id asc limit
+		1
+	</select>
 </mapper>

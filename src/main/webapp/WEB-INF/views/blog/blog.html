@@ -46,8 +46,8 @@
 						<li class="active"><a href="/content.html">文章</a></li>
 						<li><a href="/friends.html">友链</a></li>
 						<li><a href="/aboutMe.html">施工中</a></li>
-						<li><a href="/messageBoard.html">施工中</a></li>
-						<li><a href="/transfer.html">施工中</a></li>
+						<li><a href="/#">施工中</a></li>
+						<li><a href="/#">施工中</a></li>
 					</ul>
 				</div>
 			</nav>
@@ -66,8 +66,8 @@
 			<li class="active"><a href="/content.html">文章</a></li>
 			<li><a href="/friends.html">友链</a></li>
 			<li><a href="/aboutMe.html">施工中</a></li>
-			<li><a href="/messageBoard.html">施工中</a></li>
-			<li><a href="/transfer.html">施工中</a></li>
+			<li><a href="/#">施工中</a></li>
+			<li><a href="/#">施工中</a></li>
 		</ul>
 	</header>
 	<main>
@@ -86,8 +86,8 @@
 					</div>
 					<!-- /.blog-post -->
 					<ul class="pager">
-						<li>上一篇:<a id="lastContent" href="">内容</a></li>
-						<li>下一篇:<a id="nextContent" href="">内容</a></li>
+						<li>上一篇: <a id="lastContent" href="">无内容</a></li>
+						<li>下一篇: <a id="nextContent" href="">无内容</a></li>
 					</ul>
 
 				</div>
@@ -126,7 +126,7 @@
 			$('.sidenav').sidenav();
 			var href = location.search;
 			var id = href.split("=");
-			$.ajax({
+			/* $.ajax({
 				type: "POST",
 				dataType: "json",
 				url: "/count/content",
@@ -140,7 +140,7 @@
 				error: function (data) {
 
 				}
-			});
+			}); */
 			hljs.initHighlightingOnLoad();
 			$.ajax({
 				type: "POST",
@@ -159,6 +159,28 @@
 					$('pre > code').each(function () {
 						hljs.highlightBlock(this);
 					});
+				},
+				error: function (data) {
+					alert("error:" + data.responseText);
+				}
+			});
+			$.ajax({
+				type: "POST",
+				dataType: "json",
+				data: {
+					id: id[1]
+				},
+				url: "/content/getContent/getNear",
+				contentType: "application/x-www-form-urlencoded",
+				success: function (result) {
+					if (result.last != null) {
+						$('#lastContent').attr('href', '/content/getContent?id=' + result.last.contentId);
+						$('#lastContent').text(result.last.contentName);
+					}
+					if (result.next != null) {
+						$('#nextContent').attr('href', '/content/getContent?id=' + result.next.contentId);
+						$('#nextContent').text(result.next.contentName);
+					}
 				},
 				error: function (data) {
 					alert("error:" + data.responseText);

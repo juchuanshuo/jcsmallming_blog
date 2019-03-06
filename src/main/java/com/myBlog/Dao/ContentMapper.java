@@ -39,4 +39,8 @@ public interface ContentMapper {
 	int deleteById(String id);
 
 	int updateCount(String id);
+
+	Content selectLast(Integer contentId);
+
+	Content selectNext(Integer contentId);
 }

@@ -69,7 +69,6 @@ public class ContentServiceImpl implements ContentService {
 		model.setCreateTime(new Date());
 		model.setAuthor("Ð¡Ã÷");
 		model.setPageviews(0);
-		;
 		model.setContenState(1);
 		if (contentMapper.insert(model) > 0) {
 			s.put("result", "SUCCESS");
@@ -116,6 +115,17 @@ public class ContentServiceImpl implements ContentService {
 		} else {
 			result.put("re", "ÐÞ¸ÄÊ§°Ü");
 		}
+		return result;
+	}
+
+	@Override
+	public Map<String, Object> getNear(Integer id) {
+		// TODO Auto-generated method stub
+		Content last = contentMapper.selectLast(id);
+		Content next = contentMapper.selectNext(id);
+		Map<String, Object> result = new HashMap<>();
+		result.put("last", last);
+		result.put("next", next);
 		return result;
 	}
 }

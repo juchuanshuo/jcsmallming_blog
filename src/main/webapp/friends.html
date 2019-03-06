@@ -2,6 +2,15 @@
 <html lang="en">
 
 <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-135626020-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-135626020-1');
+    </script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- 使用设备的宽度作为视图宽度并禁止初始的缩放,user-scalable = no 属性能够解决 iPad 切换横屏之后触摸才能回到具体尺寸的问题。 -->
@@ -48,8 +57,8 @@
                         <li><a href="content.html">文章</a></li>
                         <li class="active"><a href="friends.html">友链</a></li>
                         <li><a href="aboutMe.html">施工中</a></li>
-                        <li><a href="messageBoard.html">施工中</a></li>
-                        <li><a href="transfer.html">施工中</a></li>
+                        <li><a href="#">施工中</a></li>
+                        <li><a href="#">施工中</a></li>
                     </ul>
                 </div>
             </nav>
@@ -65,11 +74,12 @@
                     <a href="#email"><span class="white-text email">1304363358@qq.com</span></a>
                 </div>
             </li>
+            <li><a href="/">首页</a></li>
             <li><a href="content.html">文章</a></li>
             <li class="active"><a href="friends.html">友链</a></li>
-            <li><a href="aboutMe.html">施工中</a></li>
-            <li><a href="messageBoard.html">施工中</a></li>
-            <li><a href="transfer.html">施工中</a></li>
+            <li><a href="aboutMe.html">关于我</a></li>
+            <li><a href="#">施工中</a></li>
+            <li><a href="#">施工中</a></li>
         </ul>
     </header>
     <main>
@@ -82,6 +92,9 @@
                         </div>
                         <div class="card-action center">
                             <a href="http://oew.ink/">Jiatln'blog</a>
+                        </div>
+                        <div class="card-action center">
+                            <a href="http://rex-huang61.cn/">小R</a>
                         </div>
                     </div>
                 </div>
@@ -102,9 +115,6 @@
     <script src="/resource/materialize/js/materialize.min.js"></script>
     <script type="text/javascript">
         var pn = 1;
-        var imageHeight = 100;
-        var imagewidth = 80;
-        var br = "";
         $(function () {
             $("#top").click(function () {
                 $("html,body").animate({
