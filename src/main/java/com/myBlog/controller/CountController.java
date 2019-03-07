@@ -1,7 +1,6 @@
 package com.myBlog.controller;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
@@ -11,13 +10,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.myBlog.Dao.ContentMapper;
 import com.myBlog.service.CountService;
+import com.myBlog.util.InfoUtil;
 
 /**
  * @author jcs
  *
- *         文章阅读数记录
+ *         记录
  */
 @Controller
 @RequestMapping(value = "/count")
@@ -33,4 +32,9 @@ public class CountController {
 		return null;
 	}
 
+	@ResponseBody
+	@RequestMapping("/totalTime")
+	public Map<String, Object> totalTime() throws Exception {
+		return InfoUtil.getRunTime();
+	}
 }

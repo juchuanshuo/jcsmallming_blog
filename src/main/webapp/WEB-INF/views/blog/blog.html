@@ -2,6 +2,15 @@
 <html lang="en">
 
 <head>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-135626020-1"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+
+		gtag('config', 'UA-135626020-1');
+	</script>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -45,7 +54,7 @@
 						<li><a href="/">首页</a></li>
 						<li class="active"><a href="/content.html">文章</a></li>
 						<li><a href="/friends.html">友链</a></li>
-						<li><a href="/aboutMe.html">施工中</a></li>
+						<li><a href="/aboutMe.html">关于我</a></li>
 						<li><a href="/#">施工中</a></li>
 						<li><a href="/#">施工中</a></li>
 					</ul>
@@ -65,7 +74,7 @@
 			</li>
 			<li class="active"><a href="/content.html">文章</a></li>
 			<li><a href="/friends.html">友链</a></li>
-			<li><a href="/aboutMe.html">施工中</a></li>
+			<li><a href="/aboutMe.html">关于我</a></li>
 			<li><a href="/#">施工中</a></li>
 			<li><a href="/#">施工中</a></li>
 		</ul>
@@ -109,6 +118,7 @@
 	<script type="text/javascript" src="/resource/jquery/jquery-3.2.1.min.js"></script>
 	<script src="/resource/materialize/js/materialize.min.js"></script>
 	<script src="/resource/highlight/hightlight.min.js"></script>
+	<script type="text/javascript" src="https://s96.cnzz.com/z_stat.php?id=1276421915&web_id=1276421915"></script>
 	<script type="text/javascript">
 		$(function () {
 			$("#top").click(function () {
@@ -126,7 +136,7 @@
 			$('.sidenav').sidenav();
 			var href = location.search;
 			var id = href.split("=");
-			/* $.ajax({
+			$.ajax({
 				type: "POST",
 				dataType: "json",
 				url: "/count/content",
@@ -140,7 +150,7 @@
 				error: function (data) {
 
 				}
-			}); */
+			});
 			hljs.initHighlightingOnLoad();
 			$.ajax({
 				type: "POST",

@@ -102,6 +102,9 @@
 							<p>服务器：阿里云主机</p>
 							<p>开源代码托管：<a href="https://github.com/juchuanshuo/jcsmallming_blog">github</a></p>
 						</div>
+						<div class="card-action">
+							<p>本站已运行：<span id="time"></span></p>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -116,10 +119,11 @@
 	<a id="top" class="btn btn-floating waves-effect waves-light" style="position: fixed; bottom: 30px; right: 30px; display: none;"><i
 		 class="material-icons">publish</i></a>
 
-
+	<script type="text/javascript" src="https://s96.cnzz.com/z_stat.php?id=1276421915&web_id=1276421915"></script>
 	<script type="text/javascript" src="resource/jquery/jquery-3.2.1.min.js"></script>
 	<script src="/resource/materialize/js/materialize.min.js"></script>
 	<script type="text/javascript">
+		var days, hours, minutes, seconds;
 		$(function () {
 			$("#top").click(function () {
 				$("html,body").animate({
@@ -134,7 +138,52 @@
 				}
 			}, 10);
 			$('.sidenav').sidenav();
+			$.ajax({
+				type: "POST",
+				url: "/count/totalTime",
+				contentType: "application/x-www-form-urlencoded",
+				success: function (result) {
+					days = result.days;
+					hours = result.hours;
+					minutes = result.minutes;
+					seconds = result.seconds;
+					start();
+				},
+				error: function (data) {
+					alert("error:" + data.responseText);
+				}
+			});
 		});
+
+		function start()//开始
+		{
+			int = setInterval(timer, 1000);
+		}
+
+		function timer()//计时
+		{
+			seconds = seconds + 1;
+			if (seconds >= 60) {
+				seconds = 0;
+				minutes = minutes + 1;
+			}
+
+			if (minutes >= 60) {
+				minutes = 0;
+				hours = hours + 1;
+			}
+			if (hours >= 24) {
+				hours = 0;
+				days = days + 1;
+			}
+			$('#time').text(days + '天' + hours + '时' + minutes + '分' + seconds + '秒');
+
+		}
+
+		function stop()//暂停
+		{
+			window.clearInterval(int);
+		}
 	</script>
 </body>
 
